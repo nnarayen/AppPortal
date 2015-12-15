@@ -1,0 +1,19 @@
+@import "partials/variables";
+@import "partials/layouts";
+
+.jumbotron {
+  .hero-picture {
+    height: 150px;
+  }
+
+  h1 {
+    font-size: $f-size-xxl;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+}
+
+p.about-link {
+  display: inline-block;
+}

@@ -1,0 +1,19 @@
+AllCops:
+  Exclude:
+    - app/views/**/*
+    - app/helpers/application_helper.rb
+    - bin/*
+    - config/initializers/*
+    - db/schema.rb
+    - db/migrate/**/*devise*.rb
+    - spec/spec_helper.rb
+    - Guardfile
+
+Metrics/LineLength:
+  Max: 110
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false

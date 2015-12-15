@@ -1,0 +1,19 @@
+.jumbotron
+  .row
+    .col-md-3.col-md-offset-1
+      = image_tag "home/header.png", class: "hero-picture"
+    .col-md-8
+      h2 The Berkeley Group
+      h3 Application Portal
+.row
+  .col-md-5.col-md-offset-1
+    h2 About TBG
+    p.about-subtitle = t ".about-1"
+    p.about-subtitle.about-link = t ".about-2"
+    = link_to "here.", "http://theberkeleygroup.org"
+    p.about-subtitle = t ".about-3"
+  .col-md-6
+    h2 Sign In
+    = react_component "LoginModal"
+
+
