@@ -1,0 +1,17 @@
+nav.navbar.navbar-inverse
+  .navbar-container
+    .navbar-header
+      a.navbar-brand href="/" The Berkeley Group
+    .collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+        - if current_admin
+            li = link_to "Applicant Overview", root_path
+            li = link_to "Excomm Overview", root_path
+        - if current_user
+            li.dropdown
+              a.dropdown-toggle role="button" data-toggle="dropdown" href="#"
+                | Welcome #{current_user.email}
+                span.caret
+              ul.dropdown-menu role="menu"
+                li.dropdown-link = link_to "Sign Out", destroy_session_path, method: :delete
+

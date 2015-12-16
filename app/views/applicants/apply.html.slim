@@ -1,0 +1,9 @@
+.col-md-6.col-md-offset-3
+  h3 Application Information
+  h4 = t ".welcome"
+  ul.application-information
+    - (0..5).each do |n|
+      li.info-item = t ".info-#{n}"
+  = react_component "StudentApplication", { \
+    applicant_id: @applicant.id             \
+  }

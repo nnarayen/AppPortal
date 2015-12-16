@@ -5,7 +5,7 @@ class SessionsController < Devise::SessionsController
     self.resource, resource_name = authenticate(auth_options, :applicant)
     set_flash_message(:notice, :signed_in) if is_navigational_format?
     sign_in(resource_name, resource)
-    render_json_message(:ok, message: "Login successful!")
+    render_json_message(:ok, message: "Login successful!", to: redirect_user_path(resource))
   end
 
   # Attempts to authenticate the login request, first as a Teacher and

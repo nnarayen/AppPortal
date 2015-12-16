@@ -15,6 +15,13 @@
 #  last_sign_in_ip        :inet
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  first_name             :string
+#  last_name              :string
+#  year                   :string
+#  major                  :string
+#  gpa                    :integer
+#  units                  :integer
+#  phone                  :string
 #
 
 class Applicant < ActiveRecord::Base
@@ -22,4 +29,6 @@ class Applicant < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  validates_presence_of :password_confirmation, :if => :password_required?
 end

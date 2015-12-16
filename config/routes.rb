@@ -7,6 +7,15 @@ Rails.application.routes.draw do
   devise_scope :applicant do
     post '/sign_up' => 'registrations#create'
     post '/sign_in' => 'sessions#create', :as => :create_session
-    get '/sign_out' => 'sessions#destroy', :as => :destroy_session
+    delete '/sign_out' => 'sessions#destroy', :as => :destroy_session
+  end
+
+  resources :applicants, only: [:show] do
+    get 'apply', to: 'applicants#apply'
+  end
+
+
+  namespace :api do
+    resources :applicants, only: [:show, :update]
   end
 end

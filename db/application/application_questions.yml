@@ -1,0 +1,101 @@
+--- !'map':HashWithIndifferentAccess
+
+questions:
+  - title:
+      'What can you contribute to TBG that other prospective students cannot?'
+    qtype:
+      0
+    category:
+      0
+    limit:
+      800
+  - title:
+      'Describe the activity that you have been committed to the most and your
+       role within it.'
+    qtype:
+      0
+    category:
+      0
+    limit:
+      800
+  - title:
+      'Why social sector consulting?'
+    qtype:
+      0
+    category:
+      0
+    limit:
+      800
+  - title:
+      'Please list all activities you will be participating in this semester
+       and time commitment per week.'
+    qtype:
+      0
+    category:
+      1
+    limit:
+      200
+  - title:
+      'Have you ever applied to TBG? If so, when?'
+    qtype:
+      1
+    category:
+      1
+  - title:
+      'Can you attend TBG’s Meet and Greet (by invitation only) on Wednesday,
+       9/16, 7-9 pm?'
+    qtype:
+      2
+    category:
+      1
+  - title:
+      'Can you attend weekly TBG Trainings on Wednesdays, 8-10 pm?'
+    qtype:
+      2
+    category:
+      1
+  - title:
+      'Can you attend the mandatory TBG Retreat, September 18-20? (Fri
+       afternoon - Sun afternoon)'
+    qtype:
+      2
+    category:
+      1
+  - title:
+      'Are you available for the mandatory new member orientation on Sunday,
+       September 27?'
+    qtype:
+      2
+    category:
+      1
+  - title:
+      'Are you able to commit a minimum of two consecutive semesters to The
+       Berkeley Group? [study abroad exempted]'
+    qtype:
+      2
+    category:
+      1
+  - title:
+      'Are you able to commit 8-12 hours per week to The Berkeley Group?'
+    qtype:
+      2
+    category:
+      1
+  - title:
+      'Please share any additional information (or N/A) that you would like The
+       Berkeley Group to know.'
+    qtype:
+      0
+    category:
+      2
+    limit:
+      200
+  - title:
+      'How did you hear about The Berkeley Group? (i.e., Facebook, friend
+       referral, tabling, flyer, chalking, etc.)'
+    qtype:
+      0
+    category:
+      2
+    limit:
+      200

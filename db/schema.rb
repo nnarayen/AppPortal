@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215032702) do
+ActiveRecord::Schema.define(version: 20151216034928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,9 +47,36 @@ ActiveRecord::Schema.define(version: 20151215032702) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "year"
+    t.string   "major"
+    t.integer  "gpa"
+    t.integer  "units"
+    t.string   "phone"
   end
 
   add_index "applicants", ["email"], name: "index_applicants_on_email", unique: true, using: :btree
   add_index "applicants", ["reset_password_token"], name: "index_applicants_on_reset_password_token", unique: true, using: :btree
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "qtype"
+    t.integer  "category"
+    t.integer  "limit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "responses", force: :cascade do |t|
+    t.integer  "question_id"
+    t.integer  "applicant_id"
+    t.string   "answer"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "responses", ["applicant_id"], name: "index_responses_on_applicant_id", using: :btree
+  add_index "responses", ["question_id"], name: "index_responses_on_question_id", using: :btree
 
 end

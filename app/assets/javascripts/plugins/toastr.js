@@ -1,7 +1,6 @@
 toastr.options = {
   "debug"             : false,
   "progressBar"       : false,
-  "closeButton"       : true,
   "preventDuplicates" : true,
   "showDuration"      : "900",
   "hideDuration"      : "1000",

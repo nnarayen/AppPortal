@@ -1,14 +1,8 @@
 class LoginModal extends DefaultForm {
 
-    _attemptLogin = (e) => {
+    _attemptSubmit = (e) => {
         this._attemptAction(APIConstants.sessions.sign_in,
             { applicant : this._formFields() });
-    }
-
-    _handleKeydown = (e) => {
-        if (e.which == 13) {
-            this._attemptLogin();
-        }
     }
 
     render() {
@@ -29,7 +23,7 @@ class LoginModal extends DefaultForm {
                     </fieldset>
                     <input name="submit" type="button" value="Login"
                         className="submit-button login-button"
-                        onClick={this._attemptLogin} />
+                        onClick={this._attemptSubmit} />
                 </form>
             </div>
         );

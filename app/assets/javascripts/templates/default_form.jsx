@@ -8,8 +8,20 @@ class DefaultForm extends React.Component {
         this.state = { };
     }
 
+    _handleKeydown = (e) => { if (e.which == 13) { this._attemptSubmit() } }
+
     _handleChange = (e) => {
         this.setState({ [$(e.target).attr("name")] : $(e.target).val() });
+    }
+
+    _handleNestedChange(attribute) {
+        const inputChange = (e) => {
+            const newState = React.addons.update(this.state[attribute], {
+                [$(e.target).attr("name")]: { $set: $(e.target).val() }
+            });
+            this.setState({ [attribute] : newState });
+        }
+        return inputChange;
     }
 
     _focusInputField = () => {

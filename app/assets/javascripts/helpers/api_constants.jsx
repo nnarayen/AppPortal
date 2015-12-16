@@ -8,6 +8,12 @@ class ApiConstants {
         }
     }
 
+    get applicants() {
+        return {
+            member : (id) => `/api/applicants/${id}`
+        }
+    }
+
 }
 
 const APIConstants = new ApiConstants();

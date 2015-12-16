@@ -14,7 +14,11 @@ class ApplicationController < ActionController::Base
     }, status: status
   end
 
-  def redirect_user
-    return root_path
+  def redirect_user_path(resource)
+    if resource.is_a?(Applicant)
+      return applicant_apply_path(resource)
+    else
+      return root_path
+    end
   end
 end

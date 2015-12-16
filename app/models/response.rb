@@ -1,0 +1,14 @@
+# == Schema Information
+#
+# Table name: responses
+#
+#  id           :integer          not null, primary key
+#  question_id  :integer
+#  applicant_id :integer
+#  answer       :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+class Response < ActiveRecord::Base
+end
