@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.2.3'
 
-gem 'active_model_serializers', '~> 0.9.3'
+gem 'active_model_serializers', '>= 0.10.0.rc3'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bootstrap-select-rails', '~> 1.6.3'
 gem 'devise', '~> 3.5.2'
@@ -22,6 +22,7 @@ gem 'thin', '~> 1.6.4'
 gem 'toastr_rails', '~> 2.1.1'
 gem 'turbolinks', '~> 2.5.3'
 gem 'uglifier', '>= 1.3.0'
+gem 'underscore-rails', '~> 1.8.3'
 
 group :development, :test do
   gem 'annotate'

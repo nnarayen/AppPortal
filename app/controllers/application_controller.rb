@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   def render_json_message(status, options = {})
     render json: {
       message: options[:message],
+      resource: options[:resource],
       to: options[:to],
       errors: options[:errors]
     }, status: status
@@ -20,5 +21,9 @@ class ApplicationController < ActionController::Base
     else
       return root_path
     end
+  end
+
+  def serialized_message(resource)
+    ActiveModel::SerializableResource.new(resource).serializable_hash if resource
   end
 end

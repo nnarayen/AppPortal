@@ -14,7 +14,7 @@
         }
 
         updateApplicant(id, params) {
-            var resolve = (response) => this.storeProfile(response);
+            var resolve = (response) => this.storeApplicant(response.resource);
             APIRequester.put(APIConstants.applicants.member(id), params, resolve);
             return true;
         }

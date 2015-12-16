@@ -4,8 +4,7 @@ AllCops:
     - app/helpers/application_helper.rb
     - bin/*
     - config/initializers/*
-    - db/schema.rb
-    - db/migrate/**/*devise*.rb
+    - db/**/*
     - spec/spec_helper.rb
     - Guardfile
 

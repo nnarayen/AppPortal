@@ -1,3 +1,7 @@
+def make_questions
+  Rake::Task["questions:generate"].invoke
+end
+
 def make_applicants
   1.upto(5) do |n|
     Applicant.create(
@@ -16,7 +20,7 @@ def make_applicants
 end
 
 def make_admins
-  ["pres", "ivp", "vpd", "pvp", "evp"].each do |name|
+  %w("pres", "ivp", "vpd", "pvp", "evp").each do |name|
     Admin.create(
       email: "#{name}@tbg.com",
       password: "password",
@@ -25,10 +29,6 @@ def make_admins
   end
 end
 
-def make_questions
-  Rake::Task["questions:generate"].invoke
-end
-
+make_questions
 make_applicants
 make_admins
-make_questions

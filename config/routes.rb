@@ -14,8 +14,10 @@ Rails.application.routes.draw do
     get 'apply', to: 'applicants#apply'
   end
 
-
   namespace :api do
-    resources :applicants, only: [:show, :update]
+    resources :applicants, only: [:show, :update] do
+      get 'responses', to: 'applicants#fetch'
+      post 'responses', to: 'applicants#save'
+    end
   end
 end

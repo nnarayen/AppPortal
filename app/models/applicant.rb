@@ -30,5 +30,17 @@ class Applicant < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates_presence_of :password_confirmation, :if => :password_required?
+  has_many :responses
+
+  before_create :generate_responses
+
+  validates :password_confirmation, presence: true, if: :password_required?
+
+  private
+
+  def generate_responses
+    Question.find_each do |question|
+      responses << Response.create(applicant_id: id, question_id: question.id)
+    end
+  end
 end

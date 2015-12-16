@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-  before_filter :configure_permitted_parameters, only: [:create]
+  before_action :configure_permitted_parameters, only: [:create]
 
   respond_to :json
 
@@ -7,8 +7,8 @@ class RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
     if resource.save
       sign_in(resource_name, resource)
-      render_json_message(:ok, message: 'Account created!', to:
-                          redirect_user_path(resource))
+      render_json_message(:ok, message: 'Account created!',
+                               to: redirect_user_path(resource))
     else
       clean_up_passwords resource
       render_json_message(:forbidden, errors: resource.errors.full_messages)

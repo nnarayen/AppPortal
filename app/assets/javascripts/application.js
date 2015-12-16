@@ -7,5 +7,6 @@
 //= require react
 //= require react_ujs
 //= require toastr
+//= require underscore
 //= require components
 //= require_tree .
