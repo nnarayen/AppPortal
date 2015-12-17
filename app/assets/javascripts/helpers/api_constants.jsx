@@ -11,7 +11,8 @@ class ApiConstants {
     get applicants() {
         return {
             member    : (id) => `/api/applicants/${id}`,
-            responses : (id) => `/api/applicants/${id}/responses`
+            responses : (id) => `/api/applicants/${id}/responses`,
+            upload    : (id, type) => `/api/applicants/${id}/${type}`
         }
     }
 }

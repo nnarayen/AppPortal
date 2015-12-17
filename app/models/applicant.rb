@@ -22,6 +22,8 @@
 #  gpa                    :integer
 #  units                  :integer
 #  phone                  :string
+#  resume                 :string
+#  picture                :string
 #
 
 class Applicant < ActiveRecord::Base

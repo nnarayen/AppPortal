@@ -8,14 +8,21 @@
         }
 
         fetchApplicant(id) {
-            var resolve = (response) => this.storeApplicant(response);
+            const resolve = (response) => this.storeApplicant(response);
             APIRequester.getJSON(APIConstants.applicants.member(id), resolve);
             return true;
         }
 
         updateApplicant(id, params) {
-            var resolve = (response) => this.storeApplicant(response.resource);
+            const resolve = (response) => this.storeApplicant(response.resource);
             APIRequester.put(APIConstants.applicants.member(id), params, resolve);
+            return true;
+        }
+
+        uploadDocument(id, params, extraFields, attribute) {
+            const resolve = (response) => this.storeApplicant(response);
+            APIRequester.post(APIConstants.applicants.upload(id, attribute),
+                params, resolve, extraFields);
             return true;
         }
     }

@@ -31,6 +31,16 @@ module Api
       render_json_message(:forbidden, errors: ["Error while saving application."])
     end
 
+    def upload
+      applicant = Applicant.find(params[:applicant_id])
+      upload = Cloudinary::Uploader.upload(params[:file].path).symbolize_keys
+      applicant.update!(params[:category] => upload[:version])
+      render_json_message(:ok, message: "#{params[:category].capitalize} uploaded!",
+                               resource: serialized_message(applicant))
+    rescue
+      render_json_message(:forbidden, errors: ["Error uploading document."])
+    end
+
     private
 
     def update_params

@@ -1,7 +1,8 @@
 /* Enum for which nested attributes to update */
 const Attributes = {
     APPLICANT : "applicant",
-    RESPONSE  : "responses"
+    RESUME    : "resume",
+    PICTURE   : "picture"
 }
 
 /**
@@ -43,6 +44,14 @@ class StudentApplication extends AltComponent {
         this.setState({ responses : newState });
     }
 
+    _onUpload = (e) => {
+        const formData = new FormData();
+        formData.append("file", $(e.target)[0].files[0]);
+        const extraFields = { processData : false, contentType : false };
+        ApplicantActions.uploadDocument(this.props.applicant_id, formData,
+            extraFields, $(e.target).attr("name"));
+    }
+
     render() {
         return (
             <div>
@@ -50,6 +59,7 @@ class StudentApplication extends AltComponent {
                                onChange  = {this._onChange(Attributes.APPLICANT)} />
                 <Application responses = {this.state.responses}
                              onChange  = {this._onResponseChange} />
+                <ApplicantDocuments onUpload = {this._onUpload} />
                 <button type="button" name="save" className="submit-button"
                     onClick={this._attemptSave}>
                     Save
