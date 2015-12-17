@@ -1,7 +1,7 @@
 /* Enum for which nested attributes to update */
 const Attributes = {
     APPLICANT : "applicant",
-    RESPONSE  : "response"
+    RESPONSE  : "responses"
 }
 
 /**
@@ -29,6 +29,18 @@ class StudentApplication extends AltComponent {
     _attemptSave = (e) => {
         ApplicantActions.updateApplicant(this.props.applicant_id,
             this.state.applicant);
+        ResponsesActions.updateResponses(this.props.applicant_id,
+            { responses : JSON.stringify(this.state.responses) });
+    }
+
+    _onResponseChange = (e) => {
+        const index = _.findIndex(this.state.responses, (response) => {
+            return response.id == $(e.target).attr("name");
+        });
+        const newState = React.addons.update(this.state.responses, {
+            [index]: { answer : { $set: $(e.target).val() } }
+        });
+        this.setState({ responses : newState });
     }
 
     render() {
@@ -37,7 +49,7 @@ class StudentApplication extends AltComponent {
                 <ApplicantInfo applicant = {this.state.applicant}
                                onChange  = {this._onChange(Attributes.APPLICANT)} />
                 <Application responses = {this.state.responses}
-                             onChange  = {this._onChange(Attributes.RESPONSE)} />
+                             onChange  = {this._onResponseChange} />
                 <button type="button" name="save" className="submit-button"
                     onClick={this._attemptSave}>
                     Save

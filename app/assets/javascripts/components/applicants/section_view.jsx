@@ -7,9 +7,9 @@ const QuestionType = {
 
 /* String constants for section titles */
 const CategoryTitles = {
-    ESSAY         : "Essay Questions",
-    QUESTIONNAIRE : "Questionnaire",
-    EXTRA         : "Extra Questions",
+    [QuestionCategory.ESSAY]         : "Essay Questions",
+    [QuestionCategory.QUESTIONNAIRE] : "Questionnaire",
+    [QuestionCategory.EXTRA]         : "Extra Questions",
 }
 
 /**
@@ -22,8 +22,8 @@ class SectionView extends React.Component {
     _mapResponses = (response) => {
         const typeToComponent = {
             [QuestionType.TEXT]  : TextQuestion,
-            [QuestionType.INPUT] : TextQuestion,
-            [QuestionType.RADIO] : TextQuestion
+            [QuestionType.INPUT] : InputQuestion,
+            [QuestionType.RADIO] : RadioQuestion
         };
         const ApplicationQuestion = typeToComponent[response.question.qtype];
         return (
@@ -40,12 +40,14 @@ class SectionView extends React.Component {
                     { CategoryTitles[this.props.type] }
                 </h2>
                 { this.props.responses.map(this._mapResponses) }
+                <hr />
             </div>
         );
     }
 }
 
 SectionView.propTypes = {
+    type      : React.PropTypes.number.isRequired,
     responses : React.PropTypes.array.isRequired,
     onChange  : React.PropTypes.func.isRequired
 };

@@ -14,16 +14,6 @@ class DefaultForm extends React.Component {
         this.setState({ [$(e.target).attr("name")] : $(e.target).val() });
     }
 
-    _handleNestedChange(attribute) {
-        const inputChange = (e) => {
-            const newState = React.addons.update(this.state[attribute], {
-                [$(e.target).attr("name")]: { $set: $(e.target).val() }
-            });
-            this.setState({ [attribute] : newState });
-        }
-        return inputChange;
-    }
-
     _focusInputField = () => {
         $(React.findDOMNode(this.refs.focus)).focus();
     }

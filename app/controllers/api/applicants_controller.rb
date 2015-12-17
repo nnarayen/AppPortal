@@ -16,8 +16,19 @@ module Api
     end
 
     def fetch
-      responses = Applicant.find(params[:applicant_id]).responses
+      responses = Applicant.find(params[:applicant_id]).responses.order(:id)
       render json: responses, each_serializer: ResponseSerializer, root: false
+    end
+
+    def save
+      JSON.parse(params[:responses], symbolize_names: true).each do |response|
+        Response.find(response[:id]).update!(answer: response[:answer])
+      end
+      responses = Applicant.find(params[:applicant_id]).responses.order(:id)
+      render_json_message(:ok, message: "Application questions saved!",
+                               resource: serialized_message(responses))
+    rescue
+      render_json_message(:forbidden, errors: ["Error while saving application."])
     end
 
     private
