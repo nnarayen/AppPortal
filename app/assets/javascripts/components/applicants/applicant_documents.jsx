@@ -5,21 +5,39 @@ const FILE_INPUTS = {
 }
 
 /**
- * @prop onUpload - callback function on successful upload
+ * @prop applicant - information about this applicant
+ * @prop onUpload  - callback function on file upload
  */
-class ApplicantDocuments extends AltComponent {
+class ApplicantDocuments extends React.Component {
+
+    _renderDocumentViewer(attribute) {
+        if (this.props.applicant[attribute]) {
+            return (
+                <a href={this.props.applicant[attribute]} target="_blank">
+                    { `View ${attribute}` }
+                </a>
+            );
+        }
+    }
+
     render() {
         return (
-            <form encType="multipart/form-data">
+            <div className={`scroll-${ScrollTargets.UPLOAD}`}>
+                <h2>{CategoryTitles.UPLOAD}</h2>
                 <label>Resume</label>
                 <input type="file" name={Attributes.RESUME}
                     accept={FILE_INPUTS.RESUME} onChange={this.props.onUpload} />
+                { this._renderDocumentViewer(Attributes.RESUME) }
                 <label>Picture</label>
                 <input type="file" name={Attributes.PICTURE}
                     accept={FILE_INPUTS.PICTURE} onChange={this.props.onUpload} />
-            </form>
-        )
+                { this._renderDocumentViewer(Attributes.PICTURE) }
+            </div>
+        );
     }
 }
 
-ApplicantDocuments.propTypes = { onUpload : React.PropTypes.func.isRequired };
+ApplicantDocuments.propTypes = {
+    applicant : React.PropTypes.object.isRequired,
+    onUpload  : React.PropTypes.func.isRequired
+};

@@ -8,8 +8,7 @@ module Api
     def update
       applicant = Applicant.find(params[:id])
       if applicant.update(update_params)
-        render_json_message(:ok, message: "Personal information updated!",
-                                 resource: serialized_message(applicant))
+        render_json_message(:ok, resource: serialized_message(applicant))
       else
         render_json_message(:forbidden, errors: applicant.errors.full_messages)
       end
@@ -34,7 +33,7 @@ module Api
     def upload
       applicant = Applicant.find(params[:applicant_id])
       upload = Cloudinary::Uploader.upload(params[:file].path).symbolize_keys
-      applicant.update!(params[:category] => upload[:version])
+      applicant.update!(params[:category] => upload[:secure_url])
       render_json_message(:ok, message: "#{params[:category].capitalize} uploaded!",
                                resource: serialized_message(applicant))
     rescue

@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery-smooth-scroll
 //= require bootstrap/modal
 //= require bootstrap/alert
 //= require bootstrap/dropdown

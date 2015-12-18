@@ -1,8 +1,8 @@
 /* Enum for different question categories */
 const QuestionCategory = {
-    ESSAY         : 0,
-    QUESTIONNAIRE : 1,
-    EXTRA         : 2
+    ESSAY    : 0,
+    QUESTION : 1,
+    EXTRA    : 2
 };
 
 /**
@@ -13,12 +13,12 @@ class Application extends React.Component {
 
     _filterResponses(category) {
         return _.filter(this.props.responses, (response) => {
-            return response.question.category == category;
+            return response.question.category == QuestionCategory[category];
         });
     }
 
     render() {
-        const sections = _.values(QuestionCategory).map((category) => {
+        const sections = _.keys(QuestionCategory).map((category) => {
             return (
                 <SectionView type      = {category}
                              responses = {this._filterResponses(category)}

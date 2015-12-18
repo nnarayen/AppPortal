@@ -7,9 +7,11 @@ const QuestionType = {
 
 /* String constants for section titles */
 const CategoryTitles = {
-    [QuestionCategory.ESSAY]         : "Essay Questions",
-    [QuestionCategory.QUESTIONNAIRE] : "Questionnaire",
-    [QuestionCategory.EXTRA]         : "Extra Questions",
+    PERSONAL : "Personal Information",
+    ESSAY    : "Essay Questions",
+    QUESTION : "Questionnaire",
+    EXTRA    : "Extra Questions",
+    UPLOAD   : "Upload Documents",
 }
 
 /**
@@ -34,8 +36,9 @@ class SectionView extends React.Component {
     }
 
     render() {
+        const scrollTarget = ScrollTargets[this.props.type];
         return (
-            <div className="section-responses">
+            <div className={`section-responses scroll-${scrollTarget}`}>
                 <h2>
                     { CategoryTitles[this.props.type] }
                 </h2>
@@ -47,7 +50,7 @@ class SectionView extends React.Component {
 }
 
 SectionView.propTypes = {
-    type      : React.PropTypes.number.isRequired,
+    type      : React.PropTypes.string.isRequired,
     responses : React.PropTypes.array.isRequired,
     onChange  : React.PropTypes.func.isRequired
 };

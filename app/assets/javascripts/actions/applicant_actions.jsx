@@ -20,7 +20,7 @@
         }
 
         uploadDocument(id, params, extraFields, attribute) {
-            const resolve = (response) => this.storeApplicant(response);
+            const resolve = (response) => this.storeApplicant(response.resource);
             APIRequester.post(APIConstants.applicants.upload(id, attribute),
                 params, resolve, extraFields);
             return true;
