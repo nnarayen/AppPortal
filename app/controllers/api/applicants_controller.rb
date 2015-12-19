@@ -7,27 +7,11 @@ module Api
 
     def update
       applicant = Applicant.find(params[:id])
-      if applicant.update(update_params)
-        render_json_message(:ok, resource: serialized_message(applicant))
-      else
-        render_json_message(:forbidden, errors: applicant.errors.full_messages)
-      end
-    end
-
-    def fetch
-      responses = Applicant.find(params[:applicant_id]).responses.order(:id)
-      render json: responses, each_serializer: ResponseSerializer, root: false
-    end
-
-    def save
-      JSON.parse(params[:responses], symbolize_names: true).each do |response|
-        Response.find(response[:id]).update!(answer: response[:answer])
-      end
-      responses = Applicant.find(params[:applicant_id]).responses.order(:id)
+      applicant.update!(update_params)
       render_json_message(:ok, message: "Application questions saved!",
-                               resource: serialized_message(responses))
+                               resource: serialized_message(applicant))
     rescue
-      render_json_message(:forbidden, errors: ["Error while saving application."])
+      render_json_message(:ok, errors: applicant.errors.full_messages)
     end
 
     def upload
@@ -40,10 +24,28 @@ module Api
       render_json_message(:forbidden, errors: ["Error uploading document."])
     end
 
+    def submit
+      applicant = Applicant.find(params[:applicant_id])
+      applicant.update(update_params)
+      if valid_responses?(applicant.responses) && applicant.valid?(:submit)
+        applicant.update(submit: true)
+        render_json_message(:ok, message: "Application submitted!",
+                                 resource: serialized_message(applicant))
+      else
+        render_json_message(:forbidden, errors: ["No question can be left blank."])
+      end
+    end
+
     private
 
     def update_params
-      params.permit(:first_name, :last_name, :year, :gpa, :units, :phone)
+      params[:responses_attributes] = params.delete(:responses)
+      params.permit(:first_name, :last_name, :year, :gpa, :units, :phone,
+                    :major, :resume, :picture, responses_attributes: [:id, :answer])
+    end
+
+    def valid_responses?(responses)
+      responses.all? { |response| response[:answer].present? }
     end
   end
 end

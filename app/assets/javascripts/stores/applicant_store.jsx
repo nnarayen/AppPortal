@@ -5,7 +5,7 @@
 			this.bindListeners({
 				handleStoreApplicant: ApplicantActions.STORE_APPLICANT
 			});
-			this.applicant = { };
+			this.applicant = { responses: [] };
 		}
 
 		handleStoreApplicant(response) {

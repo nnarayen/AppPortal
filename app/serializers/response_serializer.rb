@@ -1,5 +1,7 @@
 class ResponseSerializer < ActiveModel::Serializer
-  attributes :id, :answer
+  attributes :id, :answer, :question
 
-  has_one :question
+  def question
+    ActiveModel::SerializableResource.new(object.question).serializable_hash
+  end
 end

@@ -12,36 +12,37 @@ class StudentApplication extends AltComponent {
 
     componentWillMount() {
         this.setState(ApplicantStore.getState());
-        this.setState(ResponsesStore.getState());
     }
 
     componentDidMount() {
         ApplicantStore.listen(this._listener);
-        ResponsesStore.listen(this._listener);
         ApplicantActions.fetchApplicant(this.props.applicant_id);
-        ResponsesActions.fetchResponses(this.props.applicant_id);
     }
 
     componentWillUnmount() {
         ApplicantStore.unlisten(this._listener);
-        ResponsesStore.unlisten(this._listener);
     }
 
     _attemptSave = (e) => {
         ApplicantActions.updateApplicant(this.props.applicant_id,
             this.state.applicant);
-        ResponsesActions.updateResponses(this.props.applicant_id,
-            { responses : JSON.stringify(this.state.responses) });
+    }
+
+    _attemptSubmit = (e) => {
+        ApplicantActions.submitApplicant(this.props.applicant_id,
+            this.state.applicant);
     }
 
     _onResponseChange = (e) => {
-        const index = _.findIndex(this.state.responses, (response) => {
+        const index = _.findIndex(this.state.applicant.responses, (response) => {
             return response.id == $(e.target).attr("name");
         });
-        const newState = React.addons.update(this.state.responses, {
-            [index]: { answer : { $set: $(e.target).val() } }
+        const newState = React.addons.update(this.state.applicant, {
+            responses : {
+                [index]: { answer : { $set: $(e.target).val() } }
+            }
         });
-        this.setState({ responses : newState });
+        this.setState({ applicant : newState });
     }
 
     _onUpload = (e) => {
@@ -57,13 +58,17 @@ class StudentApplication extends AltComponent {
             <div>
                 <ApplicantInfo applicant = {this.state.applicant}
                                onChange  = {this._onChange(Attributes.APPLICANT)} />
-                <Application responses = {this.state.responses}
+                <Application responses = {this.state.applicant.responses}
                              onChange  = {this._onResponseChange} />
                 <ApplicantDocuments applicant = {this.state.applicant}
                                     onUpload  = {this._onUpload} />
-                <button type="button" name="save" className="submit-button"
-                    onClick={this._attemptSave}>
+                <button type="button" name="save" className="save-button"
+                        onClick={this._attemptSave}>
                     Save
+                </button>
+                <button type="button" name="submit" className="submit-button"
+                        onClick={this._attemptSubmit}>
+                    Submit
                 </button>
             </div>
         );

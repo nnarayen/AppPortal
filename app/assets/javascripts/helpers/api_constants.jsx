@@ -10,9 +10,9 @@ class ApiConstants {
 
     get applicants() {
         return {
-            member    : (id) => `/api/applicants/${id}`,
-            responses : (id) => `/api/applicants/${id}/responses`,
-            upload    : (id, type) => `/api/applicants/${id}/${type}`
+            member : (id) => `/api/applicants/${id}`,
+            upload : (id, type) => `/api/applicants/${id}/${type}`,
+            submit : (id) => `/api/applicants/${id}/submit`
         }
     }
 }

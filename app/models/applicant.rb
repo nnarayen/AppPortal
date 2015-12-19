@@ -24,6 +24,7 @@
 #  phone                  :string
 #  resume                 :string
 #  picture                :string
+#  submit                 :boolean
 #
 
 class Applicant < ActiveRecord::Base
@@ -33,10 +34,12 @@ class Applicant < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :responses
+  accepts_nested_attributes_for :responses
 
   before_create :generate_responses
 
   validates :password_confirmation, presence: true, if: :password_required?
+  validates :first_name, :last_name, :year, :major, :gpa, :units, :phone, :resume, :picture, presence: true, on: :submit
 
   private
 

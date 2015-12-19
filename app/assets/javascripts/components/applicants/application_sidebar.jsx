@@ -14,11 +14,11 @@ class ApplicationSidebar extends AltComponent {
     }
 
     componentDidMount() {
-        ResponsesStore.listen(this._listener);
+        ApplicantStore.listen(this._listener);
     }
 
     componentWillUnmount() {
-        ResponsesStore.unlisten(this._listener);
+        ApplicantStore.unlisten(this._listener);
     }
 
     _smoothScroll = (e) => {
@@ -26,7 +26,7 @@ class ApplicationSidebar extends AltComponent {
     }
 
     _calculateProgress(category) {
-        const categoryResponses = _.filter(this.state.responses, (response) => {
+        const categoryResponses = _.filter(this.state.applicant.responses, (response) => {
             return response.question.category == QuestionCategory[category];
         });
         if (categoryResponses.length) {

@@ -48,8 +48,8 @@ InputQuestion.propTypes = {
 
 /* Enum for radio options */
 const RadioOptions = {
-    YES : 1,
-    NO  : 0
+    YES : "1",
+    NO  : "0"
 }
 
 /**
@@ -64,11 +64,11 @@ class RadioQuestion extends React.Component {
                 <label>{this.props.response.question.title}</label>
                 <input name={this.props.response.id} type="radio"
                     onChange={this.props.onChange} value={RadioOptions.YES}
-                    checked={this.props.response.answer == RadioOptions.YES} />
+                    checked={this.props.response.answer === RadioOptions.YES} />
                 <label>Yes</label>
                 <input name={this.props.response.id} type="radio"
                     onChange={this.props.onChange} value={RadioOptions.NO}
-                    checked={this.props.response.answer == RadioOptions.NO} />
+                    checked={this.props.response.answer === RadioOptions.NO} />
                 <label>No</label>
             </div>
         );
