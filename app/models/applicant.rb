@@ -41,6 +41,8 @@ class Applicant < ActiveRecord::Base
   validates :password_confirmation, presence: true, if: :password_required?
   validates :first_name, :last_name, :year, :major, :gpa, :units, :phone, :resume, :picture, presence: true, on: :submit
 
+  scope :submitted, -> { where(submit: true) }
+
   private
 
   def generate_responses

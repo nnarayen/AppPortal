@@ -14,8 +14,12 @@ Rails.application.routes.draw do
     get 'apply', to: 'applicants#apply'
   end
 
+  namespace :admins do
+    get 'overview', to: 'pages#overview'
+  end
+
   namespace :api do
-    resources :applicants, only: [:show, :update] do
+    resources :applicants, only: [:index, :show, :update] do
       post 'submit', to: 'applicants#submit'
       post ':category', to: 'applicants#upload'
     end

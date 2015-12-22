@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     if resource.is_a?(Applicant)
       return applicant_apply_path(resource)
     else
-      return root_path
+      return admins_overview_path
     end
   end
 

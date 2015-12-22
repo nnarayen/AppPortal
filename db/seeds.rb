@@ -20,7 +20,7 @@ def make_applicants
 end
 
 def make_admins
-  %w("pres", "ivp", "vpd", "pvp", "evp").each do |name|
+  %w(pres ivp vpd pvp evp).each do |name|
     Admin.create(
       email: "#{name}@tbg.com",
       password: "password",

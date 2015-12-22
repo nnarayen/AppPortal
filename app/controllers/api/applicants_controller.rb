@@ -1,5 +1,15 @@
 module Api
   class ApplicantsController < Api::BaseController
+    before_action :authenticate_admin!, only: [:index, :display, :comment]
+    before_action :authenticate_applicant!, only: [:show, :update, :upload, :submit]
+
+    DECISION_TYPES = {rejected: 1, undecided: 2, accepted: 3}
+
+    def index
+      submitted = Applicant.all.submitted
+      render json: submitted, each_serializer: ApplicantSerializer, root: false
+    end
+
     def show
       applicant = Applicant.find(params[:id])
       render json: applicant, serializer: ApplicantSerializer, root: false
@@ -28,7 +38,7 @@ module Api
       applicant = Applicant.find(params[:applicant_id])
       applicant.update(update_params)
       if valid_responses?(applicant.responses) && applicant.valid?(:submit)
-        applicant.update(submit: true)
+        applicant.update(submit: true, decisions: Array.new(5, DECISION_TYPES[:undecided]))
         render_json_message(:ok, message: "Application submitted!",
                                  resource: serialized_message(applicant))
       else

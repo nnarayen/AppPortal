@@ -1,0 +1,13 @@
+@import "partials/variables";
+@import "partials/layouts";
+$icon-list: "\f00d" "\f128" "\f00c";
+
+.applicant-overview-container {
+  @each $icon in $icon-list {
+    $i: index($icon-list, $icon);
+    .decision-#{$i}:before {
+      font-family: "FontAwesome";
+      content: $icon;
+    }
+  }
+}

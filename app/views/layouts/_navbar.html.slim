@@ -5,8 +5,8 @@ nav.navbar.navbar-inverse
     .collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
         - if current_admin
-            li = link_to "Applicant Overview", root_path
-            li = link_to "Excomm Overview", root_path
+            li = link_to "Excomm Breakdown", admins_overview_path
+            li = link_to "Decision Breakdown", root_path
         - if current_user
             li.dropdown
               a.dropdown-toggle role="button" data-toggle="dropdown" href="#"
