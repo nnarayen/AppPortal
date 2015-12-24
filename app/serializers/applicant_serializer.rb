@@ -1,6 +1,6 @@
 class ApplicantSerializer < ActiveModel::Serializer
   attributes :id, :first_name, :last_name, :year, :major, :gpa, :units, :phone, :resume, :picture
-  attributes :decisions, :full_name
+  attributes :email, :decisions, :full_name
 
   has_many :responses
 

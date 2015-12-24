@@ -17,9 +17,13 @@ class ApplicantRow extends React.Component {
         });
     }
 
+    _onRowClick = (e) => {
+        window.location.href = `/applicants/${this.props.applicant.id}`;
+    }
+
     render() {
         return (
-            <tr>
+            <tr onClick={this._onRowClick}>
                 <td>
                     { this.props.applicant.full_name }
                 </td>

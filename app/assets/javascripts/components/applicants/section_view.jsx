@@ -18,6 +18,7 @@ const CategoryTitles = {
  * @prop type      - type of this section view
  * @prop responses - the responses for this section
  * @prop onChange  - callback function when inputs change
+ * @prop view      - view type for this section
  */
 class SectionView extends React.Component {
 
@@ -31,6 +32,7 @@ class SectionView extends React.Component {
         return (
             <ApplicationQuestion response = {response}
                                  onChange = {this.props.onChange}
+                                 view     = {this.props.view}
                                  key      = {response.id} />
         );
     }
@@ -50,7 +52,8 @@ class SectionView extends React.Component {
 }
 
 SectionView.propTypes = {
-    type      : React.PropTypes.string.isRequired,
     responses : React.PropTypes.array.isRequired,
-    onChange  : React.PropTypes.func.isRequired
+    onChange  : React.PropTypes.func,
+    type      : React.PropTypes.string.isRequired,
+    view      : React.PropTypes.number.isRequired
 };

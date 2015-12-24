@@ -25,6 +25,7 @@
 #  resume                 :string
 #  picture                :string
 #  submit                 :boolean
+#  decisions              :integer          default([]), is an Array
 #
 
 class Applicant < ActiveRecord::Base

@@ -1,6 +1,7 @@
 /**
  * @prop response - response for this question
  * @prop onChange - callback function when inputs change
+ * @prop view     - view type for this question
  */
 class TextQuestion extends React.Component {
 
@@ -11,6 +12,7 @@ class TextQuestion extends React.Component {
                 <textarea className="response-text"
                     name={this.props.response.id}
                     value={this.props.response.answer}
+                    readOnly={this.props.view == ApplicationView.ADMIN}
                     onChange={this.props.onChange} />
             </div>
         );
@@ -19,12 +21,14 @@ class TextQuestion extends React.Component {
 
 TextQuestion.propTypes = {
     response : React.PropTypes.object.isRequired,
-    onChange : React.PropTypes.func.isRequired
+    onChange : React.PropTypes.func,
+    view     : React.PropTypes.number.isRequired
 };
 
 /**
  * @prop response - response for this question
  * @prop onChange - callback function when inputs change
+ * @prop view     - view type for this question
  */
 class InputQuestion extends React.Component {
 
@@ -35,6 +39,7 @@ class InputQuestion extends React.Component {
                 <input className="response-text" type="text"
                     name={this.props.response.id}
                     value={this.props.response.answer}
+                    readOnly={this.props.view == ApplicationView.ADMIN}
                     onChange={this.props.onChange} />
             </div>
         );
@@ -43,7 +48,8 @@ class InputQuestion extends React.Component {
 
 InputQuestion.propTypes = {
     response : React.PropTypes.object.isRequired,
-    onChange : React.PropTypes.func.isRequired
+    onChange : React.PropTypes.func,
+    view     : React.PropTypes.number.isRequired
 };
 
 /* Enum for radio options */
@@ -55,18 +61,20 @@ const RadioOptions = {
 /**
  * @prop response - response for this question
  * @prop onChange - callback function when inputs change
+ * @prop view     - view type for this question
  */
 class RadioQuestion extends React.Component {
 
     render() {
+        const disable = this.props.view == ApplicationView.ADMIN;
         return (
             <div className="radio-response">
                 <label>{this.props.response.question.title}</label>
-                <input name={this.props.response.id} type="radio"
+                <input name={this.props.response.id} type="radio" disabled={disable}
                     onChange={this.props.onChange} value={RadioOptions.YES}
                     checked={this.props.response.answer === RadioOptions.YES} />
                 <label>Yes</label>
-                <input name={this.props.response.id} type="radio"
+                <input name={this.props.response.id} type="radio" disabled={disable}
                     onChange={this.props.onChange} value={RadioOptions.NO}
                     checked={this.props.response.answer === RadioOptions.NO} />
                 <label>No</label>
@@ -77,5 +85,6 @@ class RadioQuestion extends React.Component {
 
 RadioQuestion.propTypes = {
     response : React.PropTypes.object.isRequired,
-    onChange : React.PropTypes.func.isRequired
+    onChange : React.PropTypes.func,
+    view     : React.PropTypes.number.isRequired
 };

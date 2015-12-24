@@ -1,9 +1,9 @@
 module Api
   class ApplicantsController < Api::BaseController
-    before_action :authenticate_admin!, only: [:index, :display, :comment]
-    before_action :authenticate_applicant!, only: [:show, :update, :upload, :submit]
+    before_action :authenticate_admin!, only: [:index, :comment]
+    before_action :authenticate_applicant!, only: [:update, :upload, :submit]
 
-    DECISION_TYPES = {rejected: 1, undecided: 2, accepted: 3}
+    DECISION_TYPES = { rejected: 1, undecided: 2, accepted: 3 }
 
     def index
       submitted = Applicant.all.submitted
@@ -42,8 +42,19 @@ module Api
         render_json_message(:ok, message: "Application submitted!",
                                  resource: serialized_message(applicant))
       else
-        render_json_message(:forbidden, errors: ["No question can be left blank."])
+        render_json_message(:forbidden, errors: ["No field can be left blank."])
       end
+    end
+
+    def decide
+      applicant = Applicant.find(params[:applicant_id])
+      applicant.decisions[current_user.decision] = params[:decision]
+      applicant.save
+      render_json_message(:ok, message: "Successfully made decision!",
+                               resource: serialized_message(applicant),
+                               to: admins_overview_path)
+    rescue
+      render_json_message(:forbidden, errors: ["Error making decision."])
     end
 
     private

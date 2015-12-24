@@ -5,6 +5,12 @@ const Attributes = {
     PICTURE   : "picture"
 }
 
+/* Enum for which view type to display */
+const ApplicationView = {
+    STUDENT : 0,
+    ADMIN   : 1,
+}
+
 /**
  * @prop applicant_id - id for this applicant
  */
@@ -39,7 +45,7 @@ class StudentApplication extends AltComponent {
         });
         const newState = React.addons.update(this.state.applicant, {
             responses : {
-                [index]: { answer : { $set: $(e.target).val() } }
+                [index] : { answer : { $set: $(e.target).val() } }
             }
         });
         this.setState({ applicant : newState });
@@ -59,7 +65,8 @@ class StudentApplication extends AltComponent {
                 <ApplicantInfo applicant = {this.state.applicant}
                                onChange  = {this._onChange(Attributes.APPLICANT)} />
                 <Application responses = {this.state.applicant.responses}
-                             onChange  = {this._onResponseChange} />
+                             onChange  = {this._onResponseChange}
+                             view      = {ApplicationView.STUDENT} />
                 <ApplicantDocuments applicant = {this.state.applicant}
                                     onUpload  = {this._onUpload} />
                 <button type="button" name="save" className="save-button"

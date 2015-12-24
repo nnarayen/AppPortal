@@ -8,6 +8,7 @@ const QuestionCategory = {
 /**
  * @prop responses - the responses for this application
  * @prop onChange  - callback function when inputs change
+ * @prop view      - view type for this application
  */
 class Application extends React.Component {
 
@@ -20,9 +21,10 @@ class Application extends React.Component {
     render() {
         const sections = _.keys(QuestionCategory).map((category) => {
             return (
-                <SectionView type      = {category}
-                             responses = {this._filterResponses(category)}
+                <SectionView responses = {this._filterResponses(category)}
                              onChange  = {this.props.onChange}
+                             view      = {this.props.view}
+                             type      = {category}
                              key       = {category} />
             );
         });
@@ -36,5 +38,6 @@ class Application extends React.Component {
 
 Application.propTypes = {
     responses : React.PropTypes.array.isRequired,
-    onChange  : React.PropTypes.func.isRequired
+    onChange  : React.PropTypes.func,
+    view      : React.PropTypes.number.isRequired
 };

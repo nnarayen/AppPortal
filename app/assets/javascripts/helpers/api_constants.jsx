@@ -12,6 +12,7 @@ class ApiConstants {
         return {
             member     : (id) => `/api/applicants/${id}`,
             submit     : (id) => `/api/applicants/${id}/submit`,
+            decide     : (id) => `/api/applicants/${id}/decide`,
             upload     : (id, type) => `/api/applicants/${id}/${type}`,
             collection : `/api/applicants`,
         }

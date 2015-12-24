@@ -1,0 +1,22 @@
+@import "partials/variables";
+@import "partials/layouts";
+
+.admin-application {
+  .admin-applicant-info {
+    .applicant-large-img {
+      float: left;
+
+      img {
+        height: 210px;
+        width: 210px;
+      }
+    }
+  }
+
+  .applicant-resume {
+    object {
+      width: 830px;
+      height: 1070px;
+    }
+  }
+}

@@ -25,6 +25,12 @@
             return true;
         }
 
+        decideApplicant(id, params) {
+            const resolve = (response) => this.storeApplicant(response.resource);
+            APIRequester.post(APIConstants.applicants.decide(id), params, resolve);
+            return true;
+        }
+
         uploadDocument(id, params, extraFields, attribute) {
             const resolve = (response) => this.storeApplicant(response.resource);
             APIRequester.post(APIConstants.applicants.upload(id, attribute),

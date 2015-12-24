@@ -20,9 +20,10 @@ def make_applicants
 end
 
 def make_admins
-  %w(pres ivp vpd pvp evp).each do |name|
+  %w(pres ivp vpd pvp evp).each.with_index do |name, index|
     Admin.create(
       email: "#{name}@tbg.com",
+      decision: index,
       password: "password",
       password_confirmation: "password"
     )
