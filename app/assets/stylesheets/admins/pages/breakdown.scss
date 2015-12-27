@@ -1,0 +1,14 @@
+@import "partials/variables";
+@import "partials/layouts";
+
+.applicant-card {
+  display: block;
+  border: 2px solid $gray-dark;
+  overflow: hidden;
+
+  .applicant-small-img {
+    height: 100px;
+    width: 100px;
+    float: left;
+  }
+}

@@ -4,7 +4,7 @@ $icon-list: "\f00d" "\f128" "\f00c";
 
 .applicant-overview-container {
   @each $icon in $icon-list {
-    $i: index($icon-list, $icon);
+    $i: (index($icon-list, $icon) - 1);
     .decision-#{$i}:before {
       font-family: "FontAwesome";
       content: $icon;

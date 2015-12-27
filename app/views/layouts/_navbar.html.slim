@@ -6,7 +6,7 @@ nav.navbar.navbar-inverse
       ul.nav.navbar-nav.navbar-right
         - if current_admin
             li = link_to "Excomm Breakdown", admins_overview_path
-            li = link_to "Decision Breakdown", root_path
+            li = link_to "Decision Breakdown", admins_breakdown_path
         - if current_user
             li.dropdown
               a.dropdown-toggle role="button" data-toggle="dropdown" href="#"

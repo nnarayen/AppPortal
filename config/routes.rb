@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     get 'overview', to: 'pages#overview'
+    get 'breakdown', to: 'pages#breakdown'
   end
 
   namespace :api do

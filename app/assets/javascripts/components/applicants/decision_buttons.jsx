@@ -1,8 +1,8 @@
 /* Enum for decision types */
 const DecisionTypes = {
-    Reject    : 1,
-    Undecided : 2,
-    Accept    : 3
+    Rejected  : 0,
+    Undecided : 1,
+    Accepted  : 2
 }
 
 /**
