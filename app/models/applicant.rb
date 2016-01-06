@@ -26,6 +26,7 @@
 #  picture                :string
 #  submit                 :boolean
 #  decisions              :integer          default([]), is an Array
+#  stage                  :integer          default(0)
 #
 
 class Applicant < ActiveRecord::Base
@@ -44,6 +45,7 @@ class Applicant < ActiveRecord::Base
   validates :gpa, :units, :phone, :resume, :picture, presence: true, on: :submit
 
   scope :submitted, -> { where(submit: true) }
+  scope :current, -> { where(stage: Settings.instance.stage) }
 
   # Decision type mappings
   DECISION_TYPES = { rejected: 0, undecided: 1, accepted: 2 }
@@ -67,8 +69,16 @@ class Applicant < ActiveRecord::Base
     save!
   end
 
+  def self.accepted
+    Applicant.current.select(&:accepted?)
+  end
+
   def accepted?
     decisions.count(DECISION_TYPES[:accepted]) >= DECISION_CUTOFFS[:accepted]
+  end
+
+  def self.rejected
+    Applicant.current.select(&:rejected?)
   end
 
   def rejected?
@@ -77,6 +87,10 @@ class Applicant < ActiveRecord::Base
 
   def undecided?
     !(accepted? || rejected?)
+  end
+
+  def serialize
+    ApplicantSerializer.new(self)
   end
 
   private

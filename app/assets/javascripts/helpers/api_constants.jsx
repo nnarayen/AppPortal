@@ -17,6 +17,13 @@ class ApiConstants {
             collection : `/api/applicants`,
         }
     }
+
+    get emails() {
+        return {
+            member : (type) => `/api/emails/${type}`,
+            send   : (type) => `/api/emails/send/${type}`
+        }
+    }
 }
 
 const APIConstants = new ApiConstants();

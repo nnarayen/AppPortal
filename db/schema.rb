@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151224005957) do
+ActiveRecord::Schema.define(version: 20160106220800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,10 +59,19 @@ ActiveRecord::Schema.define(version: 20151224005957) do
     t.string   "picture"
     t.boolean  "submit"
     t.integer  "decisions",              default: [],              array: true
+    t.integer  "stage",                  default: 0
   end
 
   add_index "applicants", ["email"], name: "index_applicants_on_email", unique: true, using: :btree
   add_index "applicants", ["reset_password_token"], name: "index_applicants_on_reset_password_token", unique: true, using: :btree
+
+  create_table "emails", force: :cascade do |t|
+    t.integer  "stage"
+    t.text     "accepted",   default: ""
+    t.text     "rejected",   default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "questions", force: :cascade do |t|
     t.string   "title"
@@ -83,5 +92,12 @@ ActiveRecord::Schema.define(version: 20151224005957) do
 
   add_index "responses", ["applicant_id"], name: "index_responses_on_applicant_id", using: :btree
   add_index "responses", ["question_id"], name: "index_responses_on_question_id", using: :btree
+
+  create_table "settings", force: :cascade do |t|
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "stage",      default: 0
+    t.date     "deadline"
+  end
 
 end

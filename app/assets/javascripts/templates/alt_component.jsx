@@ -5,6 +5,10 @@ class AltComponent extends React.Component {
         this.setState(state);
     }
 
+    _onInputChange = (e) => {
+        this.setState({ [$(e.target).attr("name")] : $(e.target).val() });
+    }
+
     _onChange(attribute) {
         const inputChange = (e) => {
             const newState = React.addons.update(this.state[attribute], {

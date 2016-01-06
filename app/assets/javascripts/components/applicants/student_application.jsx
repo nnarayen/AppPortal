@@ -52,6 +52,7 @@ class StudentApplication extends AltComponent {
     }
 
     _onUpload = (e) => {
+        this._attemptSave(); // Ensure other fields are saved
         const formData = new FormData();
         formData.append("file", $(e.target)[0].files[0]);
         const extraFields = { processData : false, contentType : false };

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   namespace :admins do
     get 'overview', to: 'pages#overview'
     get 'breakdown', to: 'pages#breakdown'
+    get 'emails', to: 'pages#emails'
   end
 
   namespace :api do
@@ -24,6 +25,14 @@ Rails.application.routes.draw do
       post 'submit', to: 'applicants#submit'
       post 'decide', to: 'applicants#decide'
       post ':category', to: 'applicants#upload'
+    end
+
+    resources :emails, only: [] do
+      collection do
+        get ':category', to: 'emails#fetch'
+        put ':category', to: 'emails#update'
+        post 'send/:category', to: 'emails#send_emails'
+      end
     end
   end
 end

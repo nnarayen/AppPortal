@@ -22,8 +22,4 @@ class ApplicationController < ActionController::Base
       return admins_overview_path
     end
   end
-
-  def serialized_message(resource)
-    ActiveModel::SerializableResource.new(resource).serializable_hash if resource
-  end
 end

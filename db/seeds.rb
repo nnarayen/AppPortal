@@ -30,6 +30,13 @@ def make_admins
   end
 end
 
+def make_emails
+  0.upto(2) do |n|
+    Email.create(stage: n)
+  end
+end
+
 make_questions
 make_applicants
 make_admins
+make_emails

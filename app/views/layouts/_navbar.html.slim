@@ -7,6 +7,7 @@ nav.navbar.navbar-inverse
         - if current_admin
             li = link_to "Excomm Breakdown", admins_overview_path
             li = link_to "Decision Breakdown", admins_breakdown_path
+            li = link_to "Compose Emails", admins_emails_path
         - if current_user
             li.dropdown
               a.dropdown-toggle role="button" data-toggle="dropdown" href="#"
