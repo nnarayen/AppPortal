@@ -58,6 +58,7 @@ class StudentApplication extends AltComponent {
             <div>
                 <ApplicantInfo applicant = {this.state.applicant}
                                onChange  = {this._onChange(Attributes.APPLICANT)} />
+                <hr />
                 <Application responses = {this.state.applicant.responses}
                              onChange  = {this._onResponseChange} />
                 <ApplicantDocuments applicant = {this.state.applicant}
