@@ -1,0 +1,75 @@
+.apply-container {
+  margin-top: 30px;
+}
+
+.apply-toc {
+  padding-top: 30px;
+
+  .sidebar-label {
+    cursor: pointer;
+    padding: 6px 5px;
+
+    &:hover {
+      background: $gray-light-48;
+    }
+  }
+
+  .progress {
+    background-color: transparent;
+    box-shadow: none;
+    margin-left: 5px;
+  }
+}
+
+.toc-title {
+  font-size: $f-size-lg;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.apply-title {
+  margin-top: 0;
+}
+
+.text-response {
+  margin-bottom: 15px;
+
+  .question-label {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  textarea {
+    @include appearance(none);
+    border: 1px solid $gray-light;
+    outline: none;
+    padding: 7px;
+    min-width: 400px;
+    min-height: 100px;
+
+    &:focus {
+      border-color: $gray-dark-48;
+    }
+  }
+}
+
+.radio-response {
+  margin-bottom: 15px;
+
+  .question-label {
+    display: block;
+  }
+
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+}
+
+
+.input-response {
+  margin-bottom: 15px;
+
+  .question-label {
+    display: block;
+  }
+}

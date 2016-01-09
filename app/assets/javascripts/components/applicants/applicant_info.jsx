@@ -8,7 +8,7 @@ class ApplicantInfo extends React.Component {
         return (
             <fieldset className="input-container">
                 <label>{label}</label>
-                <input name={name} onChange={this.props.onChange}
+                <input name={name} type="text" onChange={this.props.onChange}
                     value={this.props.applicant[name]} />
             </fieldset>
         );

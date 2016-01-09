@@ -14,6 +14,10 @@ class TextQuestion extends React.Component {
         return (
             <div className="text-response">
                 <label>{this.props.response.question.title}</label>
+
+                <label className="question-label">
+                    {this.props.response.question.title}
+                </label>
                 <label>{`${charsLeft} Characters Remaining`}</label>
                 <textarea className="response-text"
                     name={this.props.response.id}
@@ -42,7 +46,9 @@ class InputQuestion extends React.Component {
     render() {
         return (
             <div className="input-response">
-                <label>{this.props.response.question.title}</label>
+                <label className="question-label">
+                    {this.props.response.question.title}
+                </label>
                 <input className="response-text" type="text"
                     name={this.props.response.id}
                     value={this.props.response.answer}
@@ -73,6 +79,7 @@ const RadioOptions = {
 class RadioQuestion extends React.Component {
 
     render() {
+<<<<<<< HEAD
         const disable = this.props.view == ApplicationView.ADMIN;
         return (
             <div className="radio-response">
@@ -85,6 +92,27 @@ class RadioQuestion extends React.Component {
                     onChange={this.props.onChange} value={RadioOptions.NO}
                     checked={this.props.response.answer === RadioOptions.NO} />
                 <label>No</label>
+=======
+        const yesId = this.props.response.id + "-yes";
+        const noId = this.props.response.id + "-no"
+        return (
+            <div className="radio-response">
+                <label className="question-label">
+                    {this.props.response.question.title}
+                </label>
+                <div>
+                    <input name={this.props.response.id} type="radio" id={yesId}
+                        onChange={this.props.onChange} value={RadioOptions.YES}
+                        checked={this.props.response.answer === RadioOptions.YES} />
+                    <label htmlFor={yesId}>Yes</label>
+                </div>
+                <div>
+                    <input name={this.props.response.id} type="radio" id={noId}
+                        onChange={this.props.onChange} value={RadioOptions.NO}
+                        checked={this.props.response.answer === RadioOptions.NO} />
+                    <label htmlFor={noId}>No</label>
+                </div>
+>>>>>>> styled homepage, application page
             </div>
         );
     }

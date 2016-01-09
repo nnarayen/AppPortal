@@ -24,14 +24,18 @@ class ApplicantDocuments extends React.Component {
         return (
             <div className={`scroll-${ScrollTargets.UPLOAD}`}>
                 <h2>{CategoryTitles.UPLOAD}</h2>
-                <label>Resume</label>
-                <input type="file" name={Attributes.RESUME}
-                    accept={FILE_INPUTS.RESUME} onChange={this.props.onUpload} />
-                { this._renderDocumentViewer(Attributes.RESUME) }
-                <label>Picture</label>
-                <input type="file" name={Attributes.PICTURE}
-                    accept={FILE_INPUTS.PICTURE} onChange={this.props.onUpload} />
-                { this._renderDocumentViewer(Attributes.PICTURE) }
+                <div className="resume-upload-container">
+                    <label>Resume</label>
+                    <input type="file" name={Attributes.RESUME}
+                        accept={FILE_INPUTS.RESUME} onChange={this.props.onUpload} />
+                    { this._renderDocumentViewer(Attributes.RESUME) }
+                </div>
+                <div className="picture-upload-container">
+                    <label>Picture</label>
+                    <input type="file" name={Attributes.PICTURE}
+                        accept={FILE_INPUTS.PICTURE} onChange={this.props.onUpload} />
+                    { this._renderDocumentViewer(Attributes.PICTURE) }
+                </div>
             </div>
         );
     }

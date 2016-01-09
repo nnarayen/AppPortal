@@ -10,14 +10,18 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_self
  *= require toastr
- *= require jquery.datetimepicker
- *= require_partials
- *= require_tree .
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+@import "partials/variables";
+@import "partials/mixins";
+@import "partials/layouts";
+
+@import "pages/home";
+@import "applicants/apply";
+@import "admins/pages/overview";

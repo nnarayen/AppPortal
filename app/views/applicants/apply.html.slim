@@ -3,14 +3,17 @@
 - elsif @past_deadline
   h3 = t ".deadline"
 - else
-  .col-md-3
-    = react_component "ApplicationSidebar"
-  .col-md-6
-    h3 Application Information
-    h4 = t ".welcome"
-    ul.application-information
-      - (0..5).each do |n|
-        li.info-item = t ".info-#{n}"
-    = react_component "StudentApplication", { \
-        applicant_id: applicant_id,           \
-      }
+  .container.main-container.apply-container
+    .row
+      .apply-toc.col-md-3
+        h1.toc-title Table of Contents
+        = react_component "ApplicationSidebar"
+      .col-md-7
+        h1.apply-title Application Information
+        p = t ".welcome"
+        ul.application-information
+          - (0..5).each do |n|
+            li.info-item = t ".info-#{n}"
+        = react_component "StudentApplication", { \
+          applicant_id: @applicant.id             \
+        }

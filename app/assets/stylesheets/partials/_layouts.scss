@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,300);
-@import "partials/variables";
 
 // reused styles and layouts go here
 * {
@@ -14,4 +13,88 @@ html, body {
 body {
   background: $gray-background;
   color: $gray-dark;
+}
+
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navbar {
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+input[type="text"],
+input[type="password"] {
+  @include appearance(none);
+  border: 1px solid $gray-light;
+  outline: none;
+  padding: 7px;
+
+  &:focus {
+    border-color: $gray-dark-48;
+  }
+}
+
+.button,
+input[type="button"] {
+  @include appearance(none);
+  background: transparent;
+  border: 1px solid $gray-light;
+  outline: none;
+  padding: 8px 10px;
+
+  &.submit-button {
+    background-color: $blue-84;
+    border-color: $blue-84;
+    color: $white;
+
+    &:hover {
+      background-color: $blue;
+      border-color: $blue;
+    }
+  }
+}
+
+.input-container {
+  margin-bottom: 15px;
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+}
+
+.modal-dialog {
+  margin-top: 100px;
+}
+
+.modal-content {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.modal-header {
+  background: $gray-dark;
+  border-bottom: none;
+  padding-left: 20px;
+
+  .modal-title {
+    color: $white;
+    margin-bottom: 0;
+  }
+}
+
+.modal-body {
+  padding-left: 20px;
+  padding-top: 25px;
+}
+
+.modal-footer {
+  border-top: 0;
+
+  .button {
+    margin-left: 15px;
+  }
 }
