@@ -7,7 +7,7 @@ class LoginModal extends DefaultForm {
 
     render() {
         return (
-            <div>
+            <div className="login-form">
                 <form>
                     <fieldset className="input-container">
                         <label>Email</label>

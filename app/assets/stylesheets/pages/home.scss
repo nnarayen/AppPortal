@@ -1,17 +1,66 @@
-@import "partials/variables";
-@import "partials/layouts";
+.hero-container {
+  padding: 40px 0;
 
-.jumbotron {
+  .logo {
+    display: inline-block;
+    margin-right: 50px;
+    vertical-align: middle;
+    width: 180px;
+  }
+
   .hero-picture {
-    height: 150px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 
-  h1 {
-    font-size: $f-size-xxl;
-    font-weight: 600;
-    margin-bottom: 30px;
-    text-align: center;
+  .title-container {
+    display: inline-block;
+    vertical-align: middle;
   }
+
+  .hero-title {
+    font-size: $f-size-title;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: 0;
+  }
+
+  .hero-subtitle {
+    color: $gray-dark-72;
+    font-size: $f-size-xxl;
+    margin: 0;
+  }
+}
+
+.about-container,
+.login-container {
+  h1 {
+    font-size: $f-size-xl;
+    font-weight: 600;
+    margin-bottom: 20px;
+    margin-top: 0;
+  }
+
+  p {
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+}
+
+.login-container {
+  input[type="text"],
+  input[type="password"] {
+    min-width: 250px;
+  }
+}
+
+.login-form {
+  margin-bottom: 15px;
+}
+
+.register-link {
+  cursor: pointer;
 }
 
 p.about-link {
