@@ -13,8 +13,6 @@ class TextQuestion extends React.Component {
         const charsLeft = this._charsRemaining(this.props.response);
         return (
             <div className="text-response">
-                <label>{this.props.response.question.title}</label>
-
                 <label className="question-label">
                     {this.props.response.question.title}
                 </label>
@@ -80,6 +78,7 @@ class RadioQuestion extends React.Component {
 
     render() {
 <<<<<<< HEAD
+<<<<<<< HEAD
         const disable = this.props.view == ApplicationView.ADMIN;
         return (
             <div className="radio-response">
@@ -97,6 +96,12 @@ class RadioQuestion extends React.Component {
         const noId = this.props.response.id + "-no"
         return (
             <div className="radio-response">
+=======
+        const yesId = this.props.response.id + "-yes";
+        const noId = this.props.response.id + "-no"
+        return (
+            <div className="radio-response">
+>>>>>>> styled homepage, application page
                 <label className="question-label">
                     {this.props.response.question.title}
                 </label>
@@ -112,6 +117,9 @@ class RadioQuestion extends React.Component {
                         checked={this.props.response.answer === RadioOptions.NO} />
                     <label htmlFor={noId}>No</label>
                 </div>
+<<<<<<< HEAD
+>>>>>>> styled homepage, application page
+=======
 >>>>>>> styled homepage, application page
             </div>
         );
