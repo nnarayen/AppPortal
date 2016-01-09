@@ -38,6 +38,8 @@ class Applicant < ActiveRecord::Base
   has_many :responses
   accepts_nested_attributes_for :responses
 
+  has_many :comments
+
   before_create :generate_responses
 
   validates :password_confirmation, presence: true, if: :password_required?
@@ -67,6 +69,10 @@ class Applicant < ActiveRecord::Base
   def decide(index, decision)
     decisions[index] = decision
     save!
+  end
+
+  def comment(admin_id, text)
+    comments << Comment.create!(admin_id: admin_id, text: text)
   end
 
   def self.accepted

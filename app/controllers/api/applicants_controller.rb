@@ -26,7 +26,7 @@ module Api
       applicant = Applicant.find(params[:applicant_id])
       applicant.upload(upload_params.symbolize_keys)
       render_json_message(:ok, message: "#{params[:category].capitalize} uploaded!",
-                               resource: applicant.serialize)
+                               resource: applicant.send(params[:category]))
     rescue
       render_json_message(:forbidden, errors: ["Error uploading document."])
     end
@@ -49,6 +49,15 @@ module Api
                                to: admins_overview_path)
     rescue
       render_json_message(:forbidden, errors: ["Error making decision."])
+    end
+
+    def comment
+      applicant = Applicant.find(params[:applicant_id])
+      applicant.comment(current_user.id, params[:text])
+      render_json_message(:ok, message: "Comment submitted!",
+                               resource: applicant.serialize)
+    rescue
+      render_json_message(:forbidden, errors: ["Error posting comment."])
     end
 
     private

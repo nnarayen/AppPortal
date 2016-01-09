@@ -26,6 +26,8 @@ class AdminApplication extends AltComponent {
                 </div>
                 <Application responses = {this.state.applicant.responses}
                              view      = {ApplicationView.ADMIN} />
+                <CommentSection comments     = {this.state.applicant.comments}
+                                applicant_id = {this.state.applicant.id} />
                 <DecisionButtons applicant = {this.state.applicant} />
             </div>
         );

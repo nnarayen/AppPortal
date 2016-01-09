@@ -11,9 +11,8 @@ const DecisionTypes = {
 class DecisionButtons extends React.Component {
 
     _attemptDecision = (e) => {
-        ApplicantActions.decideApplicant(this.props.applicant.id, {
-            decision : $(e.target).attr("name")
-        });
+        ApplicantActions.changeApplicant(APIConstants.applicants.decide(
+            this.props.applicant.id), { decision: $(e.target).attr("name") });
     }
 
     render() {

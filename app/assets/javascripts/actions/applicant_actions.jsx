@@ -3,7 +3,8 @@
 
         constructor() {
             this.generateActions(
-                'storeApplicant'
+                'storeApplicant',
+                'addAttribute'
             );
         }
 
@@ -19,20 +20,15 @@
             return true;
         }
 
-        submitApplicant(id, params) {
+        changeApplicant(route, params) {
             const resolve = (response) => this.storeApplicant(response.resource);
-            APIRequester.post(APIConstants.applicants.submit(id), params, resolve);
+            APIRequester.post(route, params, resolve);
             return true;
         }
 
-        decideApplicant(id, params) {
-            const resolve = (response) => this.storeApplicant(response.resource);
-            APIRequester.post(APIConstants.applicants.decide(id), params, resolve);
-            return true;
-        }
-
-        uploadDocument(id, params, extraFields, attribute) {
-            const resolve = (response) => this.storeApplicant(response.resource);
+        uploadDocument(id, params, extraFields, attribute, applicant) {
+            this.storeApplicant(applicant);
+            const resolve = (resp) => this.addAttribute(resp.resource, attribute);
             APIRequester.post(APIConstants.applicants.upload(id, attribute),
                 params, resolve, extraFields);
             return true;

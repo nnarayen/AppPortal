@@ -35,8 +35,8 @@ class StudentApplication extends AltComponent {
     }
 
     _attemptSubmit = (e) => {
-        ApplicantActions.submitApplicant(this.props.applicant_id,
-            this.state.applicant);
+        ApplicantActions.changeApplicant(APIConstants.applicants.submit(
+            this.props.applicant_id), this.state.applicant);
     }
 
     _onResponseChange = (e) => {
@@ -52,12 +52,11 @@ class StudentApplication extends AltComponent {
     }
 
     _onUpload = (e) => {
-        this._attemptSave(); // Ensure other fields are saved
         const formData = new FormData();
         formData.append("file", $(e.target)[0].files[0]);
         const extraFields = { processData : false, contentType : false };
         ApplicantActions.uploadDocument(this.props.applicant_id, formData,
-            extraFields, $(e.target).attr("name"));
+            extraFields, $(e.target).attr("name"), this.state.applicant);
     }
 
     render() {

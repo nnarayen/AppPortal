@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :applicants, only: [:index, :show, :update] do
       post 'submit', to: 'applicants#submit'
       post 'decide', to: 'applicants#decide'
+      post 'comment', to: 'applicants#comment'
       post ':category', to: 'applicants#upload'
     end
 

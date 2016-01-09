@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  stage      :integer
+#  stage      :integer          default(0)
 #  deadline   :date
 #
 
