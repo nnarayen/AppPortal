@@ -19,7 +19,7 @@ module Api
       render_json_message(:ok, message: "Application questions saved!",
                                resource: applicant.serialize)
     rescue
-      render_json_message(:ok, errors: applicant.errors.full_messages)
+      render_json_message(:forbidden, errors: applicant.errors.full_messages)
     end
 
     def upload
@@ -53,7 +53,7 @@ module Api
 
     def comment
       applicant = Applicant.find(params[:applicant_id])
-      applicant.comment(current_user.id, params[:text])
+      applicant.add_comment(current_user.id, params[:text])
       render_json_message(:ok, message: "Comment submitted!",
                                resource: applicant.serialize)
     rescue

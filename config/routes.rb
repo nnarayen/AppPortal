@@ -32,7 +32,7 @@ Rails.application.routes.draw do
       collection do
         get ':category', to: 'emails#fetch'
         put ':category', to: 'emails#update'
-        post 'send/:category', to: 'emails#send_emails'
+        post ':category/send', to: 'emails#send_emails'
       end
     end
   end

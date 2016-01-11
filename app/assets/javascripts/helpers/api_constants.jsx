@@ -22,7 +22,7 @@ class ApiConstants {
     get emails() {
         return {
             member : (type) => `/api/emails/${type}`,
-            send   : (type) => `/api/emails/send/${type}`
+            send   : (type) => `/api/emails/${type}/send`
         }
     }
 }

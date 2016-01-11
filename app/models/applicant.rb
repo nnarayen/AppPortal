@@ -71,7 +71,7 @@ class Applicant < ActiveRecord::Base
     save!
   end
 
-  def comment(admin_id, text)
+  def add_comment(admin_id, text)
     comments << Comment.create!(admin_id: admin_id, text: text)
   end
 

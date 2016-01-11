@@ -1,7 +1,7 @@
 class CommentSerializer < ActiveModel::Serializer
-  attributes :id, :text, :admin
+  attributes :id, :text, :name
 
-  def admin
+  def name
     object.admin.name
   end
 end
