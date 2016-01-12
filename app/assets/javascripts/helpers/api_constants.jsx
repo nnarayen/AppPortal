@@ -25,6 +25,13 @@ class ApiConstants {
             send   : (type) => `/api/emails/${type}/send`
         }
     }
+
+    get interviews() {
+        return {
+            member     : (id) => `/api/interviews/${id}`,
+            collection : `/api/interviews`
+        }
+    }
 }
 
 const APIConstants = new ApiConstants();

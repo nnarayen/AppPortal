@@ -1,5 +1,7 @@
 module Api
   class EmailsController < Api::BaseController
+    before_action :authenticate_admin!
+
     def fetch
       render json: Email.current.send(params[:category]).to_json
     end

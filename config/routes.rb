@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get 'overview', to: 'pages#overview'
     get 'breakdown', to: 'pages#breakdown'
     get 'emails', to: 'pages#emails'
+    get 'interviews', to: 'pages#interviews'
   end
 
   namespace :api do
@@ -34,6 +35,10 @@ Rails.application.routes.draw do
         put ':category', to: 'emails#update'
         post ':category/send', to: 'emails#send_emails'
       end
+    end
+
+    resources :interviews, only: [:index, :create, :update] do
+      post 'schedule', to: 'interviews#schedule'
     end
   end
 end

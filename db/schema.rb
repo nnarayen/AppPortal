@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160108234927) do
+ActiveRecord::Schema.define(version: 20160111232400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,9 +61,11 @@ ActiveRecord::Schema.define(version: 20160108234927) do
     t.boolean  "submit"
     t.integer  "decisions",              default: [],              array: true
     t.integer  "stage",                  default: 0
+    t.integer  "interview_id"
   end
 
   add_index "applicants", ["email"], name: "index_applicants_on_email", unique: true, using: :btree
+  add_index "applicants", ["interview_id"], name: "index_applicants_on_interview_id", using: :btree
   add_index "applicants", ["reset_password_token"], name: "index_applicants_on_reset_password_token", unique: true, using: :btree
 
   create_table "comments", force: :cascade do |t|
@@ -83,6 +85,12 @@ ActiveRecord::Schema.define(version: 20160108234927) do
     t.text     "rejected",   default: ""
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "interviews", force: :cascade do |t|
+    t.datetime "timeslot"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "questions", force: :cascade do |t|

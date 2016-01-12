@@ -1,11 +1,12 @@
 module Api
   class ApplicantsController < Api::BaseController
-    before_action :authenticate_admin!, only: [:index, :comment]
+    before_action :authenticate_user!, only: [:show]
+    before_action :authenticate_admin!, only: [:index, :decide, :comment]
     before_action :authenticate_applicant!, only: [:update, :upload, :submit]
 
     def index
       submitted = Applicant.all.submitted.order(:id)
-      render json: submitted, each_serializer: ApplicantSerializer, root: false
+      render json: submitted, each_serializer: ApplicantSerializer
     end
 
     def show

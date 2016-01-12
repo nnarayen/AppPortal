@@ -4,6 +4,8 @@
 //= require bootstrap/modal
 //= require bootstrap/alert
 //= require bootstrap/dropdown
+//= require moment
+//= require jquery.datetimepicker
 //= require turbolinks
 //= require react
 //= require react_ujs
