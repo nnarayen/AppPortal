@@ -48,7 +48,7 @@ class Applicant < ActiveRecord::Base
   validates :first_name, :last_name, :year, :major, presence: true, on: :submit
   validates :gpa, :units, :phone, :resume, :picture, presence: true, on: :submit
 
-  validates_associated :interview
+  validates_associated :interview, if: :interview_id_changed?
 
   scope :submitted, -> { where(submit: true) }
   scope :current, -> { where(stage: Settings.instance.stage) }
@@ -101,6 +101,14 @@ class Applicant < ActiveRecord::Base
 
   def serialize
     ApplicantSerializer.new(self)
+  end
+
+  def current?
+    stage == Settings.instance.stage
+  end
+
+  def schedule_interview(interview_id)
+    update!(interview_id: interview_id)
   end
 
   private

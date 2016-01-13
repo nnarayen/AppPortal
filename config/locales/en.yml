@@ -1,5 +1,11 @@
 ---
 en:
+  activerecord:
+    errors:
+      models:
+        applicant:
+          invalid:
+            slot has been filled. Please refresh or choose another.
   pages:
     home:
       about-1: >
@@ -36,3 +42,7 @@ en:
       info-5: >
         A one page resume is required. For assistance with writing resumes,
         please visit the career center.
+    status:
+      notify: >
+        Thank you for applying to The Berkeley Group. At this point, we've
+        decided we can't move forward with your application. Sucks.

@@ -34,4 +34,4 @@ class AdminApplication extends AltComponent {
     }
 }
 
-AdminApplication.propTypes = { applicant_id : React.PropTypes.number.isRequired };
+AdminApplication.propTypes = { applicant_id : React.PropTypes.string.isRequired };

@@ -17,9 +17,11 @@ class ApplicationController < ActionController::Base
 
   def redirect_user_path(resource)
     if resource.is_a?(Applicant)
-      return applicant_apply_path(resource)
+      stage = Settings.instance.stage
+      return applicant_apply_path(resource) if stage == 0
+      resource.current? ? applicant_interview_path(resource) : applicant_status_path(resource)
     else
-      return admins_overview_path
+      admins_overview_path
     end
   end
 end

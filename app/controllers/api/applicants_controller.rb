@@ -61,6 +61,15 @@ module Api
       render_json_message(:forbidden, errors: ["Error posting comment."])
     end
 
+    def schedule
+      applicant = Applicant.find(params[:applicant_id])
+      applicant.schedule_interview(params[:interview])
+      render_json_message(:ok, message: "Interview scheduled!",
+                               to: applicant_interview_path(applicant))
+    rescue
+      render_json_message(:forbidden, errors: applicant.errors.full_messages)
+    end
+
     private
 
     def update_params

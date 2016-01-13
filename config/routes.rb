@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :applicants, only: [:show] do
     get 'apply', to: 'applicants#apply'
+    get 'interview', to: 'applicants#interview'
+    get 'status', to: 'applicants#status'
   end
 
   namespace :admins do
@@ -26,6 +28,7 @@ Rails.application.routes.draw do
       post 'submit', to: 'applicants#submit'
       post 'decide', to: 'applicants#decide'
       post 'comment', to: 'applicants#comment'
+      post 'schedule', to: 'applicants#schedule'
       post ':category', to: 'applicants#upload'
     end
 
@@ -37,8 +40,6 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :interviews, only: [:index, :create, :update] do
-      post 'schedule', to: 'interviews#schedule'
-    end
+    resources :interviews, only: [:index, :create, :update]
   end
 end

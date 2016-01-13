@@ -11,4 +11,9 @@
 
 class Settings < ActiveRecord::Base
   acts_as_singleton
+
+  def self.format_stage
+    stages = %w(resume group personal)
+    stages[instance.stage]
+  end
 end

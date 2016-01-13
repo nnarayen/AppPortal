@@ -15,6 +15,7 @@ class ApiConstants {
             decide     : (id) => `/api/applicants/${id}/decide`,
             upload     : (id, type) => `/api/applicants/${id}/${type}`,
             comment    : (id) => `/api/applicants/${id}/comment`,
+            schedule   : (id) => `/api/applicants/${id}/schedule`,
             collection : `/api/applicants`,
         }
     }

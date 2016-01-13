@@ -82,4 +82,4 @@ class StudentApplication extends AltComponent {
     }
 }
 
-StudentApplication.propTypes = { applicant_id : React.PropTypes.number.isRequired };
+StudentApplication.propTypes = { applicant_id : React.PropTypes.string.isRequired };

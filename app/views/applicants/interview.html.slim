@@ -1,0 +1,10 @@
+.row
+  .col-md-12
+    h2 Congratulations on making it to the #{@stage} interview!
+    - if @interview
+      h3 Your interview is currently scheduled for #{@interview.format_timeslot}.
+    - else
+      h3 Please select an open timeslot from the list below.
+      = react_component "InterviewScheduler", { \
+        applicant_id: applicant_id              \
+      }

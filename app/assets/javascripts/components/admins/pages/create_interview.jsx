@@ -1,22 +1,20 @@
 class CreateInterview extends React.Component {
 
     _createInterview = (e) => {
-        InterviewsActions.createInterview({
-            timeslot : $(React.findDOMNode(this.refs.interview)).val()
-        });
+        // Hacky workaround since datepicker gem overrides manual input
+        const timeslot = $(React.findDOMNode(this.refs.interview)).val();
+        InterviewsActions.createInterview({ timeslot : timeslot });
     }
 
     componentDidMount() {
         $(React.findDOMNode(this.refs.interview)).datetimepicker({
               format: DATETIME_FORMAT,
               formatTime: TIME_FORMAT,
-              formatDate: DATE_FORMAT,
-              onChangeDateTime: this._handleDateChange
+              formatDate: DATE_FORMAT
         });
     }
 
     render() {
-        console.log(this.state);
         return (
             <div className="create-interview">
                 <input ref="interview" placeholder="Schedule Interview" />

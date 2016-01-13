@@ -11,7 +11,7 @@
 class Interview < ActiveRecord::Base
   has_many :applicants
 
-  validate :under_capacity
+  validate :has_capacity
   validates :timeslot, presence: true
 
   default_scope { order "timeslot" }
@@ -31,12 +31,14 @@ class Interview < ActiveRecord::Base
     InterviewSerializer.new(self)
   end
 
+  def format_timeslot
+    timeslot.strftime("%a %b %d, %I:%M %p")
+  end
+
   private
 
-  def under_capacity
-    if applicants.size >= Interview.capacity
-      errors.add(:capacity, "Interview slot filled, please refresh.")
-    end
+  def has_capacity
+    errors.add(:capacity, "Interview slot filled.") unless available?
   end
 
   def self.capacity
