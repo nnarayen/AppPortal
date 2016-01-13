@@ -40,6 +40,8 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :interviews, only: [:index, :create, :update]
+    resources :interviews, only: [:index, :create, :update] do
+      collection { delete :index, to: 'interviews#reset' }
+    end
   end
 end

@@ -1,3 +1,8 @@
+/* Table Headers */
+TABLE_HEADERS = [
+    "Applicant Name", "Year", "GPA", "Major", "PRES", "IVP", "PVP", "VPD", "EVP"
+];
+
 class OverviewTable extends AltComponent {
 
     componentWillMount() {
@@ -21,20 +26,16 @@ class OverviewTable extends AltComponent {
             );
         });
 
+        const headers = TABLE_HEADERS.map((header) => {
+            return <th key={header}>{header}</th>
+        });
+
         return (
             <div className="applicant-overview-container">
                 <table className="table overview-table">
                     <thead>
                         <tr>
-                            <th>Applicant Name</th>
-                            <th>Year</th>
-                            <th>GPA</th>
-                            <th>Major</th>
-                            <th>PRES</th>
-                            <th>IVP</th>
-                            <th>PVP</th>
-                            <th>VPD</th>
-                            <th>EVP</th>
+                            { headers }
                         </tr>
                     </thead>
                     <tbody>

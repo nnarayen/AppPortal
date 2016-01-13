@@ -11,7 +11,7 @@
 class Interview < ActiveRecord::Base
   has_many :applicants
 
-  validate :has_capacity
+  validate :capacity?
   validates :timeslot, presence: true
 
   default_scope { order "timeslot" }
@@ -37,7 +37,7 @@ class Interview < ActiveRecord::Base
 
   private
 
-  def has_capacity
+  def capacity?
     errors.add(:capacity, "Interview slot filled.") unless available?
   end
 

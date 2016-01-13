@@ -4,7 +4,7 @@ en:
     errors:
       models:
         applicant:
-          invalid:
+          invalid: >
             slot has been filled. Please refresh or choose another.
   pages:
     home:

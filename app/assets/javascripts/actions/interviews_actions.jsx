@@ -17,6 +17,12 @@
             APIRequester.post(APIConstants.interviews.collection, params, resolve);
             return true;
         }
+
+        resetInterviews() {
+            const resolve = (response) => this.storeInterviews(response.resource);
+            APIRequester.delete(APIConstants.interviews.collection, resolve);
+            return true;
+        }
     }
     this.InterviewsActions = alt.createActions(InterviewsActions);
 })();
