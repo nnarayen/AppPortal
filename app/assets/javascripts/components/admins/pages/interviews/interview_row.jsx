@@ -15,7 +15,7 @@ class InterviewRow extends React.Component {
         return (
             <tr className="interview-row">
                 <td>
-                    { formatDateTime(this.props.interview.timeslot) }
+                    <EditableTimeslot interview = {this.props.interview} />
                 </td>
                 { applicants }
             </tr>

@@ -40,13 +40,14 @@ class Applicant < ActiveRecord::Base
   accepts_nested_attributes_for :responses
 
   has_many :comments
-  belongs_to :interview
+  belongs_to :interview, dependent: :destroy
 
   before_create :generate_responses
 
   validates :password_confirmation, presence: true, if: :password_required?
   validates :first_name, :last_name, :year, :major, presence: true, on: :submit
   validates :gpa, :units, :phone, :resume, :picture, presence: true, on: :submit
+  validates :stage, numericality: { less_than: 3 }
 
   validates_associated :interview, if: :interview_id_changed?
 
@@ -109,6 +110,10 @@ class Applicant < ActiveRecord::Base
 
   def schedule_interview(interview_id)
     update!(interview_id: interview_id)
+  end
+
+  def advance
+    update!(stage: stage + 1)
   end
 
   private

@@ -5,10 +5,11 @@ nav.navbar.navbar-inverse
     .collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
         - if current_admin
-            li = link_to "Excomm Breakdown", admins_overview_path
+            li = link_to "Excomm Overview", admins_overview_path
             li = link_to "Decision Breakdown", admins_breakdown_path
             li = link_to "Compose Emails", admins_emails_path
             li = link_to "Schedule Interviews", admins_interviews_path
+            li = link_to "Update Settings", admins_settings_path
         - if current_user
             li.dropdown
               a.dropdown-toggle role="button" data-toggle="dropdown" href="#"

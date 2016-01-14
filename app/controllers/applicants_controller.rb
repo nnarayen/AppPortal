@@ -4,7 +4,7 @@ class ApplicantsController < ApplicationController
   before_action :validate_status, only: [:status]
 
   def interview
-    @stage = Settings.format_stage
+    @stage = Settings.instance.format_stage
     @interview = Applicant.find(applicant_id).interview
   end
 

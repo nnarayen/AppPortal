@@ -5,13 +5,20 @@
  */
 class TextQuestion extends React.Component {
 
+    _charsRemaining(response) {
+        return response.question.limit - response.answer.length;
+    }
+
     render() {
+        const charsLeft = this._charsRemaining(this.props.response);
         return (
             <div className="text-response">
                 <label>{this.props.response.question.title}</label>
+                <label>{`${charsLeft} Characters Remaining`}</label>
                 <textarea className="response-text"
                     name={this.props.response.id}
                     value={this.props.response.answer}
+                    maxLength={this.props.response.limit}
                     readOnly={this.props.view == ApplicationView.ADMIN}
                     onChange={this.props.onChange} />
             </div>

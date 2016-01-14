@@ -12,8 +12,14 @@
 class Settings < ActiveRecord::Base
   acts_as_singleton
 
-  def self.format_stage
+  validates :stage, numericality: { less_than: 3 }
+
+  def format_stage
     stages = %w(resume group personal)
-    stages[instance.stage]
+    stages[stage]
+  end
+
+  def serialize
+    SettingsSerializer.new(self)
   end
 end

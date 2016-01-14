@@ -33,6 +33,13 @@ class ApiConstants {
             collection : `/api/interviews`
         }
     }
+
+    get settings() {
+        return {
+            collection : `/api/settings`,
+            advance    : `/api/settings/advance`
+        }
+    }
 }
 
 const APIConstants = new ApiConstants();

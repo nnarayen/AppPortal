@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get 'breakdown', to: 'pages#breakdown'
     get 'emails', to: 'pages#emails'
     get 'interviews', to: 'pages#interviews'
+    get 'settings', to: 'pages#settings'
   end
 
   namespace :api do
@@ -40,8 +41,15 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :interviews, only: [:index, :create, :update] do
+    resources :interviews, only: [:index, :create, :update, :destroy] do
       collection { delete :index, to: 'interviews#reset' }
+    end
+
+    resources :settings, only: [:index, :create] do
+      collection do
+        post 'advance', to: 'settings#advance'
+        delete :index, to: 'settings#reset'
+      end
     end
   end
 end
