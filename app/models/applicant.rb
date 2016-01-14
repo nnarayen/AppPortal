@@ -31,10 +31,18 @@
 #
 
 class Applicant < ActiveRecord::Base
+  include PgSearch
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  pg_search_scope :filter,
+    against: [:first_name, :last_name],
+    using: {
+      tsearch: { prefix: true }
+    }
 
   has_many :responses
   accepts_nested_attributes_for :responses

@@ -5,7 +5,7 @@
 #  id           :integer          not null, primary key
 #  question_id  :integer
 #  applicant_id :integer
-#  answer       :string
+#  answer       :string           default("")
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #

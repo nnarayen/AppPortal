@@ -3,6 +3,10 @@ class ApplicantsController < ApplicationController
   before_action :validate_interview, only: [:interview]
   before_action :validate_status, only: [:status]
 
+  def apply
+    @past_deadline = DateTime.current > Settings.instance.deadline
+  end
+
   def interview
     @stage = Settings.instance.format_stage
     @interview = Applicant.find(applicant_id).interview

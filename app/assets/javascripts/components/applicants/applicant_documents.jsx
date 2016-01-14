@@ -6,6 +6,7 @@ const FILE_INPUTS = {
 
 /**
  * @prop applicant - information about this applicant
+ * @prop disabled  - whether upload should be disabled
  * @prop onUpload  - callback function on file upload
  */
 class ApplicantDocuments extends React.Component {
@@ -26,11 +27,13 @@ class ApplicantDocuments extends React.Component {
                 <h2>{CategoryTitles.UPLOAD}</h2>
                 <label>Resume</label>
                 <input type="file" name={Attributes.RESUME}
-                    accept={FILE_INPUTS.RESUME} onChange={this.props.onUpload} />
+                    disabled={this.props.disabled} accept={FILE_INPUTS.RESUME}
+                    onChange={this.props.onUpload} />
                 { this._renderDocumentViewer(Attributes.RESUME) }
                 <label>Picture</label>
                 <input type="file" name={Attributes.PICTURE}
-                    accept={FILE_INPUTS.PICTURE} onChange={this.props.onUpload} />
+                    disabled={this.props.disabled} accept={FILE_INPUTS.PICTURE}
+                    onChange={this.props.onUpload} />
                 { this._renderDocumentViewer(Attributes.PICTURE) }
             </div>
         );
@@ -39,5 +42,6 @@ class ApplicantDocuments extends React.Component {
 
 ApplicantDocuments.propTypes = {
     applicant : React.PropTypes.object.isRequired,
+    disabled  : React.PropTypes.bool.isRequired,
     onUpload  : React.PropTypes.func.isRequired
 };

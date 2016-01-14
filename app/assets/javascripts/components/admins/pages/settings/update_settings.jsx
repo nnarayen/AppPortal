@@ -13,7 +13,7 @@ class UpdateSettings extends AltComponent {
         SettingsStore.unlisten(this._listener);
     }
 
-    _attemptAdvance= (e) => {
+    _attemptAdvance = (e) => {
         SettingsActions.advanceSettings({ stage : this.state.settings.stage + 1 });
     }
 

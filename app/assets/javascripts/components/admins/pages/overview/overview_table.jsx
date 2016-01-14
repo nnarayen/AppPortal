@@ -11,7 +11,6 @@ class OverviewTable extends AltComponent {
 
     componentDidMount() {
         ApplicantsStore.listen(this._listener);
-        ApplicantsActions.fetchApplicants();
     }
 
     componentWillUnmount() {

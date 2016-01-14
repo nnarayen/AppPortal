@@ -7,6 +7,15 @@ const ScrollTargets = {
     UPLOAD   : 4
 }
 
+/* Text to display depending on application status */
+const StatusText = [
+    `You have successfully submitted your application!`,
+    `The deadline has already passed for this application period.`
+];
+
+/*
+ * @prop late - whether the deadline has already passed for this application
+ */
 class ApplicationSidebar extends AltComponent {
 
     componentWillMount() {
@@ -26,21 +35,20 @@ class ApplicationSidebar extends AltComponent {
     }
 
     _calculateProgress(category) {
-        const categoryResponses = _.filter(this.state.applicant.responses, (response) => {
-            return response.question.category == QuestionCategory[category];
+        var answered = total = 0;
+        _.each(this.state.applicant.responses, (response) => {
+            if (response.question.category == QuestionCategory[category]) {
+                total = total + 1;
+                if (response.answer) { answered = answered + 1 }
+            }
         });
-        if (categoryResponses.length) {
-            const answered = _.filter(categoryResponses, (response) => {
-                return response.answer;
-            }).length;
-            return `(${answered} / ${categoryResponses.length} completed)`;
-        }
+        return (total) ? `(${answered} / ${total} completed)` : null;
     }
 
     _generateLabel = (label) => {
         return (
             <div className="sidebar-label" onClick={this._smoothScroll}
-                data-target={`.scroll-${ScrollTargets[label]}`} key={label}>
+                    data-target={`.scroll-${ScrollTargets[label]}`} key={label}>
                 { CategoryTitles[label] }
                 <span className="progress">
                     { this._calculateProgress(label) }
@@ -49,11 +57,24 @@ class ApplicationSidebar extends AltComponent {
         );
     }
 
+    _text(attribute, index) {
+        return (attribute) ? StatusText[index] : null;
+    }
+
+    _generateStatusText(applicant) {
+        return this._text(applicant.submit, 0) || this._text(this.props.late, 1);
+    }
+
     render() {
         return (
             <div>
                 { _.keys(ScrollTargets).map(this._generateLabel) }
+                <span className="status-text">
+                    { this._generateStatusText(this.state.applicant) }
+                </span>
             </div>
         );
     }
 }
+
+ApplicationSidebar.propTypes = { late : React.PropTypes.bool.isRequired };

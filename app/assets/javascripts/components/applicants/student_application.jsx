@@ -60,6 +60,7 @@ class StudentApplication extends AltComponent {
     }
 
     render() {
+        const disableUpdate = (this.state.applicant.submit || this.props.late);
         return (
             <div>
                 <ApplicantInfo applicant = {this.state.applicant}
@@ -68,13 +69,14 @@ class StudentApplication extends AltComponent {
                              onChange  = {this._onResponseChange}
                              view      = {ApplicationView.STUDENT} />
                 <ApplicantDocuments applicant = {this.state.applicant}
+                                    disabled  = {disableUpdate}
                                     onUpload  = {this._onUpload} />
                 <button type="button" name="save" className="save-button"
-                        onClick={this._attemptSave}>
+                        onClick={this._attemptSave} disabled={disableUpdate}>
                     Save
                 </button>
                 <button type="button" name="submit" className="submit-button"
-                        onClick={this._attemptSubmit}>
+                        onClick={this._attemptSubmit} disabled={disableUpdate}>
                     Submit
                 </button>
             </div>

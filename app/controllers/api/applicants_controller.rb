@@ -5,8 +5,9 @@ module Api
     before_action :authenticate_applicant!, only: [:update, :upload, :submit]
 
     def index
-      submitted = Applicant.all.submitted.current.order(:id)
-      render json: submitted, each_serializer: ApplicantSerializer
+      applicants = Applicant.all.submitted.current
+      applicants = applicants.filter(params[:filter]) if params[:filter].present?
+      render json: applicants.order(:id), each_serializer: SimpleAppSerializer
     end
 
     def show
