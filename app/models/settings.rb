@@ -6,7 +6,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  stage      :integer          default(0)
-#  deadline   :date
+#  deadline   :datetime
 #
 
 class Settings < ActiveRecord::Base

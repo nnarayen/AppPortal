@@ -9,7 +9,7 @@ class AltComponent extends React.Component {
         this.setState({ [$(e.target).attr("name")] : $(e.target).val() });
     }
 
-    _onChange(attribute) {
+    _onChange = (attribute) => {
         const inputChange = (e) => {
             const newState = React.addons.update(this.state[attribute], {
                 [$(e.target).attr("name")]: { $set: $(e.target).val() }
@@ -17,5 +17,9 @@ class AltComponent extends React.Component {
             this.setState({ [attribute] : newState });
         }
         return inputChange;
+    }
+
+    _onDateChange = (date) => {
+        this.setState({ date : formatDateTime(date) });
     }
 }

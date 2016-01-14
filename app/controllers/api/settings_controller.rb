@@ -6,6 +6,15 @@ module Api
       render json: Settings.instance, serializer: SettingsSerializer
     end
 
+    # Actually used as the update method since Settings is a singleton model
+    def create
+      Settings.instance.update!(update_params)
+      render_json_message(:ok, message: "Settings successfully updated!",
+                               resource: Settings.instance.serialize)
+    rescue
+      render_json_message(:forbidden, errors: ["Unable to update settings."])
+    end
+
     def advance
       Applicant.accepted.map(&:advance)
       Settings.instance.update!(update_params)
