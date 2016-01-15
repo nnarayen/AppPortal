@@ -21,6 +21,10 @@
   }
 }
 
+.apply {
+  margin-bottom: 40px;
+}
+
 .toc-title {
   font-size: $f-size-lg;
   font-weight: bold;
@@ -72,4 +76,13 @@
   .question-label {
     display: block;
   }
+}
+
+.upload-container {
+  margin-bottom: 40px;
+}
+
+.single-upload-container {
+  display: inline-block;
+  width: 50%;
 }
