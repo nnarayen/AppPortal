@@ -1,7 +1,9 @@
 class ApplicantsController < ApplicationController
-  helper_method :applicant_id
+  before_action :authorize
   before_action :validate_interview, only: [:interview]
   before_action :validate_status, only: [:status]
+
+  helper_method :applicant_id
 
   def apply
     @past_deadline = DateTime.current > Settings.instance.deadline
@@ -17,6 +19,10 @@ class ApplicantsController < ApplicationController
   end
 
   private
+
+  def authorize
+    authorize!(params[:action].to_sym, Applicant.find(applicant_id))
+  end
 
   def validate_interview
     redirect_to redirect_user_path(current_user) unless current_user.current?

@@ -6,6 +6,11 @@ class ApplicationController < ActionController::Base
   # Devise authentication group for any signed in user
   devise_group :user, contains: [:applicant, :admin]
 
+  # Handle unauthorized requests
+  rescue_from(CanCan::AccessDenied) do |exception|
+    redirect_to root_path
+  end
+
   def render_json_message(status, options = {})
     render json: {
       message: options[:message],
