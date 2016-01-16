@@ -51,16 +51,30 @@ class StudentApplication extends AltComponent {
         this.setState({ applicant : newState });
     }
 
-    _onUpload = (e) => {
+    _toggleButton = (button) => {
+        const toggleFunc = () => {
+            $(button).prop("disabled", (_, val) => { return !val });
+        };
+        return toggleFunc;
+    }
+
+    _createFormData = (e) => {
         const formData = new FormData();
         formData.append("file", $(e.target)[0].files[0]);
+        return formData;
+    }
+
+    _onUpload = (e) => {
+        const formData = this._createFormData(e);
+        const attribute = $(e.target).attr("name");
         const extraFields = { processData : false, contentType : false };
+        const toggleFunc = this._toggleButton(e.target);
+        toggleFunc(); // Temporarily disable upload button
         ApplicantActions.uploadDocument(this.props.applicant_id, formData,
-            extraFields, $(e.target).attr("name"), this.state.applicant);
+            extraFields, attribute, this.state.applicant, toggleFunc);
     }
 
     render() {
-        const disableUpdate = (this.state.applicant.submit || this.props.late);
         return (
             <div>
                 <ApplicantInfo applicant = {this.state.applicant}
@@ -69,14 +83,13 @@ class StudentApplication extends AltComponent {
                              onChange  = {this._onResponseChange}
                              view      = {ApplicationView.STUDENT} />
                 <ApplicantDocuments applicant = {this.state.applicant}
-                                    disabled  = {disableUpdate}
                                     onUpload  = {this._onUpload} />
                 <button type="button" name="save" className="save-button"
-                        onClick={this._attemptSave} disabled={disableUpdate}>
+                        onClick={this._attemptSave}>
                     Save
                 </button>
                 <button type="button" name="submit" className="submit-button"
-                        onClick={this._attemptSubmit} disabled={disableUpdate}>
+                        onClick={this._attemptSubmit}>
                     Submit
                 </button>
             </div>

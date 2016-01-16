@@ -19,6 +19,12 @@ en:
         theberkeleygroup@gmail.com.
   applicants:
     apply:
+      submitted:
+        Your application to the Berkeley Group has been successfully submitted!
+        You should be hearing from us shortly.
+      deadline:
+        The deadline for this semester's application has already passed. Please
+        try again during our next recruitment period.
       welcome: >
         Welcome to the online application portal for The Berkeley Group. All
         fields are required.

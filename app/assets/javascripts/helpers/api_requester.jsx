@@ -11,8 +11,8 @@ class Requester {
         console.error(xhr, status, error.toString());
     }
 
-    _attemptAjax(endpoint, type, data, extraFields, onSuccess, onError) {
-        $.ajax($.extend({}, extraFields, {
+    _attemptAjax(endpoint, type, data, extra, onSuccess, onError, onComplete) {
+        $.ajax($.extend({}, extra, {
             url: endpoint,
             type: type,
             data: data,
@@ -23,26 +23,29 @@ class Requester {
             },
             error: (xhr, status, error) => {
                 onError(xhr, status, error);
+            },
+            complete: (_xhr, _status) => {
+                if (onComplete) { onComplete() }
             }
         }));
     }
 
-    post(endpoint, data, success, extraFields = {}) {
+    post(endpoint, data, success, extraFields, ensure) {
         this._attemptAjax(endpoint, 'POST', data, extraFields, success,
-            this._postErrorHandler);
+            this._postErrorHandler, ensure);
     }
 
-    getJSON(endpoint, success, data = {}) {
+    getJSON(endpoint, success, data) {
         this._attemptAjax(`${endpoint}.json`, 'GET', data,
             { dataType : 'json' }, success, this._getErrorHandler);
     }
 
-    put(endpoint, data, success, extraFields = {}) {
+    put(endpoint, data, success, extraFields) {
         this._attemptAjax(endpoint, 'PUT', data, extraFields, success,
             this._postErrorHandler);
     }
 
-    delete(endpoint, success, data = {}, extraFields = {}) {
+    delete(endpoint, success, data, extraFields) {
         this._attemptAjax(endpoint, 'DELETE', data, extraFields, success,
             this._postErrorHandler);
     }

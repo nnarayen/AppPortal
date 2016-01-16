@@ -36,6 +36,10 @@ def make_emails
   end
 end
 
+def make_settings
+  Settings.instance.update(deadline: DateTime.now.advance(months: 2))
+end
+
 make_questions
 make_applicants
 make_admins

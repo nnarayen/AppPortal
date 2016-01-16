@@ -6,6 +6,7 @@ class ApplicantsController < ApplicationController
   helper_method :applicant_id
 
   def apply
+    @applicant = Applicant.find(applicant_id)
     @past_deadline = DateTime.current > Settings.instance.deadline
   end
 

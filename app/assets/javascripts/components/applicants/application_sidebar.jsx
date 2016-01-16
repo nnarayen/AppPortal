@@ -7,12 +7,6 @@ const ScrollTargets = {
     UPLOAD   : 4
 }
 
-/* Text to display depending on application status */
-const StatusText = [
-    `You have successfully submitted your application!`,
-    `The deadline has already passed for this application period.`
-];
-
 /*
  * @prop late - whether the deadline has already passed for this application
  */
@@ -57,24 +51,11 @@ class ApplicationSidebar extends AltComponent {
         );
     }
 
-    _text(attribute, index) {
-        return (attribute) ? StatusText[index] : null;
-    }
-
-    _generateStatusText(applicant) {
-        return this._text(applicant.submit, 0) || this._text(this.props.late, 1);
-    }
-
     render() {
         return (
             <div>
                 { _.keys(ScrollTargets).map(this._generateLabel) }
-                <span className="status-text">
-                    { this._generateStatusText(this.state.applicant) }
-                </span>
             </div>
         );
     }
 }
-
-ApplicationSidebar.propTypes = { late : React.PropTypes.bool.isRequired };

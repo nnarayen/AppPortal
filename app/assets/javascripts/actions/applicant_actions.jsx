@@ -26,11 +26,11 @@
             return true;
         }
 
-        uploadDocument(id, params, extraFields, attribute, applicant) {
+        uploadDocument(id, params, extraFields, attribute, applicant, ensure) {
             this.storeApplicant(applicant);
             const resolve = (resp) => this.addAttribute(resp.resource, attribute);
             APIRequester.post(APIConstants.applicants.upload(id, attribute),
-                params, resolve, extraFields);
+                params, resolve, extraFields, ensure);
             return true;
         }
     }
