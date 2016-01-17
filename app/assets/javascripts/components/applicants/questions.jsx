@@ -79,6 +79,7 @@ class RadioQuestion extends React.Component {
     render() {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         const disable = this.props.view == ApplicationView.ADMIN;
         return (
             <div className="radio-response">
@@ -102,6 +103,12 @@ class RadioQuestion extends React.Component {
         return (
             <div className="radio-response">
 >>>>>>> styled homepage, application page
+=======
+        const yesId = this.props.response.id + "-yes";
+        const noId = this.props.response.id + "-no"
+        return (
+            <div className="radio-response">
+>>>>>>> 5f16e2c1800f7b1a6985112aa99b4ce4d62a6d0f
                 <label className="question-label">
                     {this.props.response.question.title}
                 </label>
@@ -118,9 +125,12 @@ class RadioQuestion extends React.Component {
                     <label htmlFor={noId}>No</label>
                 </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> styled homepage, application page
 =======
 >>>>>>> styled homepage, application page
+=======
+>>>>>>> 5f16e2c1800f7b1a6985112aa99b4ce4d62a6d0f
             </div>
         );
     }
