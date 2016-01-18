@@ -1,9 +1,11 @@
 .apply-container {
-  margin-top: 30px;
+  padding: 25px 15px;
 }
 
 .apply-toc {
-  padding-top: 30px;
+  padding-top: 20px;
+  position: fixed;
+  width: 270px;
 
   .sidebar-label {
     cursor: pointer;
@@ -21,13 +23,6 @@
   }
 }
 
-<<<<<<< HEAD
-=======
-.apply {
-  margin-bottom: 40px;
-}
-
->>>>>>> 5f16e2c1800f7b1a6985112aa99b4ce4d62a6d0f
 .toc-title {
   font-size: $f-size-lg;
   font-weight: bold;
@@ -38,11 +33,23 @@
   margin-top: 0;
 }
 
+.category-title {
+  font-size: $f-size-xxl;
+  margin-bottom: 25px;
+}
+
 .text-response {
   margin-bottom: 15px;
 
   .question-label {
     display: block;
+    margin-bottom: 5px;
+  }
+
+  .char-remaining-label {
+    color: $gray-dark-72;
+    display: block;
+    font-weight: 400;
     margin-bottom: 10px;
   }
 
@@ -53,6 +60,7 @@
     padding: 7px;
     min-width: 400px;
     min-height: 100px;
+    resize: vertical;
 
     &:focus {
       border-color: $gray-dark-48;
@@ -61,7 +69,7 @@
 }
 
 .radio-response {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 
   .question-label {
     display: block;
@@ -80,15 +88,74 @@
     display: block;
   }
 }
-<<<<<<< HEAD
-=======
 
 .upload-container {
-  margin-bottom: 40px;
+  margin-bottom: 25px;
 }
 
 .single-upload-container {
   display: inline-block;
+  padding: 0 10px;
   width: 50%;
 }
->>>>>>> 5f16e2c1800f7b1a6985112aa99b4ce4d62a6d0f
+
+.upload-label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.upload-button {
+  cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
+  span {
+    margin-right: 5px;
+  }
+
+  &:hover {
+    border-color: $blue-84;
+  }
+}
+
+.upload-true {
+  border-color: $blue;
+  color: $blue;
+}
+
+#resume-upload,
+#picture-upload {
+  display: none;
+}
+
+.save-button {
+  margin-right: 10px;
+}
+
+@media (max-width: 991px) {
+  .apply-toc {
+    margin-bottom: 20px;
+    padding-top: 0;
+    position: relative;
+  }
+
+  .toc-title {
+    font-size: $f-size-xl;
+  }
+
+  .apply-title {
+    font-size: $f-size-xxl;
+  }
+
+  .text-response {
+    textarea {
+      min-width: 0;
+      width: 100%;
+    }
+  }
+
+  input[type="text"] {
+    width: 100%;
+  }
+}

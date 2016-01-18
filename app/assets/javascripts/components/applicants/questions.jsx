@@ -16,7 +16,9 @@ class TextQuestion extends React.Component {
                 <label className="question-label">
                     {this.props.response.question.title}
                 </label>
-                <label>{`${charsLeft} Characters Remaining`}</label>
+                <label className="char-remaining-label">
+                    {`${charsLeft} Characters Remaining`}
+                </label>
                 <textarea className="response-text"
                     name={this.props.response.id}
                     value={this.props.response.answer}
@@ -77,60 +79,28 @@ const RadioOptions = {
 class RadioQuestion extends React.Component {
 
     render() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         const disable = this.props.view == ApplicationView.ADMIN;
-        return (
-            <div className="radio-response">
-                <label>{this.props.response.question.title}</label>
-                <input name={this.props.response.id} type="radio" disabled={disable}
-                    onChange={this.props.onChange} value={RadioOptions.YES}
-                    checked={this.props.response.answer === RadioOptions.YES} />
-                <label>Yes</label>
-                <input name={this.props.response.id} type="radio" disabled={disable}
-                    onChange={this.props.onChange} value={RadioOptions.NO}
-                    checked={this.props.response.answer === RadioOptions.NO} />
-                <label>No</label>
-=======
         const yesId = this.props.response.id + "-yes";
         const noId = this.props.response.id + "-no"
         return (
             <div className="radio-response">
-=======
-        const yesId = this.props.response.id + "-yes";
-        const noId = this.props.response.id + "-no"
-        return (
-            <div className="radio-response">
->>>>>>> styled homepage, application page
-=======
-        const yesId = this.props.response.id + "-yes";
-        const noId = this.props.response.id + "-no"
-        return (
-            <div className="radio-response">
->>>>>>> 5f16e2c1800f7b1a6985112aa99b4ce4d62a6d0f
                 <label className="question-label">
                     {this.props.response.question.title}
                 </label>
                 <div>
                     <input name={this.props.response.id} type="radio" id={yesId}
-                        onChange={this.props.onChange} value={RadioOptions.YES}
-                        checked={this.props.response.answer === RadioOptions.YES} />
+                        disabled={disable} onChange={this.props.onChange}
+                        checked={this.props.response.answer === RadioOptions.YES}
+                        value={RadioOptions.YES} />
                     <label htmlFor={yesId}>Yes</label>
                 </div>
                 <div>
                     <input name={this.props.response.id} type="radio" id={noId}
-                        onChange={this.props.onChange} value={RadioOptions.NO}
-                        checked={this.props.response.answer === RadioOptions.NO} />
+                        disabled={disable} onChange={this.props.onChange}
+                        checked={this.props.response.answer === RadioOptions.NO}
+                        value={RadioOptions.NO} />
                     <label htmlFor={noId}>No</label>
                 </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> styled homepage, application page
-=======
->>>>>>> styled homepage, application page
-=======
->>>>>>> 5f16e2c1800f7b1a6985112aa99b4ce4d62a6d0f
             </div>
         );
     }

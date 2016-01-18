@@ -18,6 +18,7 @@ body {
 .main-container {
   max-width: 1200px;
   margin: 0 auto;
+  margin-top: 50px;
 }
 
 .navbar {
@@ -45,6 +46,10 @@ input[type="button"] {
   outline: none;
   padding: 8px 10px;
 
+  &:hover {
+    border-color: $gray-dark-48;
+  }
+
   &.submit-button {
     background-color: $blue-84;
     border-color: $blue-84;
@@ -63,6 +68,10 @@ input[type="button"] {
   label {
     display: block;
     margin-bottom: 5px;
+  }
+
+  input {
+    min-width: 250px;
   }
 }
 

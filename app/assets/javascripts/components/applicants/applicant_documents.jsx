@@ -16,8 +16,10 @@ class ApplicantDocuments extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            resumeFile  : DEFAULT_FILE,
-            pictureFile : DEFAULT_FILE
+            resumeSubmit  : false,
+            resumeFile    : DEFAULT_FILE,
+            pictureSubmit : false,
+            pictureFile   : DEFAULT_FILE
         };
     }
 
@@ -32,34 +34,55 @@ class ApplicantDocuments extends React.Component {
     }
 
     _handleFileSelect = (e) => {
-        // Disable roster upload if no file selected
-        console.log(e.target.id);
-        this.setState({
+        var resumeSubmitStatus = this.state.resumeSubmit;
+        var resumeFileName = this.state.resumeFile || DEFAULT_FILE;
+        var pictureSubmitStatus = this.state.pictureSubmit;
+        var pictureFileName = this.state.pictureFile || DEFAULT_FILE;
 
-            resumeFile  : $(e.target).val().split("\\").pop() || DEFAULT_FILE,
-            pictureFile : $(e.target).val().split("\\").pop() || DEFAULT_FILE
+        if (e.target.id == "resume-upload") {
+            resumeSubmitStatus = $(e.target)[0].files.length > 0;
+            resumeFileName = $(e.target).val().split("\\").pop() || DEFAULT_FILE;
+        }
+        if (e.target.id == "picture-upload") {
+            pictureSubmitStatus = $(e.target)[0].files.length > 0;
+            pictureFileName = $(e.target).val().split("\\").pop() || DEFAULT_FILE;
+        }
+
+        this.setState({
+            resumeSubmit  : resumeSubmitStatus,
+            resumeFile    : resumeFileName,
+            pictureSubmit : pictureSubmitStatus,
+            pictureFile   : pictureFileName
         });
+
         this.props.onUpload();
     }
 
     render() {
+        const resumeIcon = "fa " + (this.state.resumeSubmit ?  "fa-check-circle-o" : "fa-upload");
+        const pictureIcon = "fa " + (this.state.pictureSubmit ?  "fa-check-circle-o" : "fa-upload");
+
         return (
             <div className={`upload-container scroll-${ScrollTargets.UPLOAD}`}>
-                <h2>{CategoryTitles.UPLOAD}</h2>
+                <h2 className="category-title">{CategoryTitles.UPLOAD}</h2>
                 <div className="single-upload-container">
-                    <label>Resume</label>
+                    <label className="upload-label">Resume</label>
                     <input type="file" name={Attributes.RESUME} id="resume-upload"
                         accept={FILE_INPUTS.RESUME} onChange={this._handleFileSelect} />
-                    <label htmlFor="resume-upload">
+                    <label className={`button upload-button upload-${this.state.resumeSubmit}`}
+                        htmlFor="resume-upload">
+                        <span className={resumeIcon} />
                         {this.state.resumeFile}
                     </label>
                     { this._renderDocumentViewer(Attributes.RESUME) }
                 </div>
                 <div className="single-upload-container">
-                    <label>Picture</label>
+                    <label className="upload-label">Picture</label>
                     <input type="file" name={Attributes.PICTURE}
                         id="picture-upload" accept={FILE_INPUTS.PICTURE} onChange={this._handleFileSelect} />
-                    <label htmlFor="picture-upload">
+                    <label className={`button upload-button upload-${this.state.pictureSubmit}`}
+                        htmlFor="picture-upload">
+                        <span className={pictureIcon} />
                         {this.state.pictureFile}
                     </label>
                     { this._renderDocumentViewer(Attributes.PICTURE) }
