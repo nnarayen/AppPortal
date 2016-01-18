@@ -17,7 +17,7 @@ class ApplicantInfo extends React.Component {
     render() {
         return (
             <div className={`scroll-${ScrollTargets.PERSONAL}`}>
-                <h2>{CategoryTitles.PERSONAL}</h2>
+                <h2 className="category-title">{CategoryTitles.PERSONAL}</h2>
                 { this._renderInput("first_name", "First Name") }
                 { this._renderInput("last_name", "Last Name") }
                 { this._renderInput("year", "Year") }

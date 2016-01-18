@@ -1,14 +1,14 @@
-- if @applicant.submit
-  h3 = t ".submitted"
-- elsif @past_deadline
-  h3 = t ".deadline"
-- else
-  .container.main-container.apply-container
+.container.main-container.apply-container
+  - if @applicant.submit
+    h3 = t ".submitted"
+  - elsif @past_deadline
+    h3 = t ".deadline"
+  - else
     .row
       .apply-toc.col-md-3
         h1.toc-title Table of Contents
         = react_component "ApplicationSidebar"
-      .col-md-7
+      .apply-content.col-md-7.col-md-offset-3
         h1.apply-title Application Information
         p = t ".welcome"
         ul.application-information

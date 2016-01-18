@@ -1,5 +1,5 @@
-nav.navbar.navbar-inverse
-  .navbar-container
+nav.navbar.navbar-inverse.navbar-fixed-top
+  .container
     .navbar-header
       a.navbar-brand href="/" The Berkeley Group
     .collapse.navbar-collapse
@@ -17,4 +17,3 @@ nav.navbar.navbar-inverse
                 span.caret
               ul.dropdown-menu role="menu"
                 li.dropdown-link = link_to "Sign Out", destroy_session_path, method: :delete
-
