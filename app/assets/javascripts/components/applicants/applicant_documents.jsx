@@ -26,7 +26,8 @@ class ApplicantDocuments extends React.Component {
     _renderDocumentViewer(attribute) {
         if (this.props.applicant[attribute]) {
             return (
-                <a href={this.props.applicant[attribute]} target="_blank">
+                <a href={this.props.applicant[attribute]} target="_blank"
+                    className="upload-view-link">
                     { `View ${attribute}` }
                 </a>
             );
@@ -34,28 +35,19 @@ class ApplicantDocuments extends React.Component {
     }
 
     _handleFileSelect = (e) => {
-        var resumeSubmitStatus = this.state.resumeSubmit;
-        var resumeFileName = this.state.resumeFile || DEFAULT_FILE;
-        var pictureSubmitStatus = this.state.pictureSubmit;
-        var pictureFileName = this.state.pictureFile || DEFAULT_FILE;
-
-        if (e.target.id == "resume-upload") {
-            resumeSubmitStatus = $(e.target)[0].files.length > 0;
-            resumeFileName = $(e.target).val().split("\\").pop() || DEFAULT_FILE;
-        }
-        if (e.target.id == "picture-upload") {
-            pictureSubmitStatus = $(e.target)[0].files.length > 0;
-            pictureFileName = $(e.target).val().split("\\").pop() || DEFAULT_FILE;
-        }
-
+        const submitStatus = $(e.target)[0].files.length > 0;
+        const filename = $(e.target).val().split("\\").pop() || DEFAULT_FILE;
+        const attribute = $(e.target).attr("name");
         this.setState({
-            resumeSubmit  : resumeSubmitStatus,
-            resumeFile    : resumeFileName,
-            pictureSubmit : pictureSubmitStatus,
-            pictureFile   : pictureFileName
+            [`${attribute}Submit`] : submitStatus,
+            [`${attribute}File`]   : filename
         });
+        this.props.onUpload(e);
+    }
 
-        this.props.onUpload();
+    _generateIcon = (attribute) => {
+        return "fa " + ((this.state[`${attribute}Status`]) ?
+            "fa-check-circle-o" : "fa-upload");
     }
 
     render() {
@@ -71,7 +63,7 @@ class ApplicantDocuments extends React.Component {
                         accept={FILE_INPUTS.RESUME} onChange={this._handleFileSelect} />
                     <label className={`button upload-button upload-${this.state.resumeSubmit}`}
                         htmlFor="resume-upload">
-                        <span className={resumeIcon} />
+                        <span className={this._generateIcon(Attributes.RESUME)} />
                         {this.state.resumeFile}
                     </label>
                     { this._renderDocumentViewer(Attributes.RESUME) }
@@ -82,7 +74,7 @@ class ApplicantDocuments extends React.Component {
                         id="picture-upload" accept={FILE_INPUTS.PICTURE} onChange={this._handleFileSelect} />
                     <label className={`button upload-button upload-${this.state.pictureSubmit}`}
                         htmlFor="picture-upload">
-                        <span className={pictureIcon} />
+                        <span className={this._generateIcon(Attributes.PICTURE)} />
                         {this.state.pictureFile}
                     </label>
                     { this._renderDocumentViewer(Attributes.PICTURE) }
