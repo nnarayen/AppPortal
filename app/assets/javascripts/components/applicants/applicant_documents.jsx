@@ -7,6 +7,9 @@ const FileInputs = {
 /* Text to display before user has uploaded a file */
 const DEFAULT_FILE = "Choose a File";
 
+/* Text to display when uploading file */
+const UPLOAD_TEXT = "Uploading...";
+
 /**
  * @prop applicant - information about this applicant
  * @prop onUpload  - callback function on file upload
@@ -16,11 +19,16 @@ class ApplicantDocuments extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            resumeSubmit  : false,
-            resumeFile    : DEFAULT_FILE,
-            pictureSubmit : false,
-            pictureFile   : DEFAULT_FILE
+            resumeFile  : DEFAULT_FILE,
+            pictureFile : DEFAULT_FILE
         };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            resumeFile  : nextProps.applicant.resumeFile || this.state.resumeFile,
+            pictureFile : nextProps.applicant.pictureFile || this.state.pictureFile
+        });
     }
 
     _renderDocumentViewer(attribute) {
@@ -34,20 +42,21 @@ class ApplicantDocuments extends React.Component {
         }
     }
 
-    _handleFileSelect = (e) => {
-        const submitStatus = $(e.target)[0].files.length > 0;
-        const filename = $(e.target).val().split("\\").pop() || DEFAULT_FILE;
-        const attribute = $(e.target).attr("name");
-        this.setState({
-            [`${attribute}Submit`] : submitStatus,
-            [`${attribute}File`]   : filename
-        });
-        this.props.onUpload(e);
+    _hasSubmit = (attribute) => {
+        return this.state[`${attribute}File`] !== DEFAULT_FILE;
     }
 
-    _generateIcon = (attribute) => {
-        return "fa " + ((this.state[`${attribute}Submit`]) ?
-            "fa-check-circle-o" : "fa-upload");
+    _handleFileSelect = (e) => {
+        const filename = $(e.target).val().split("\\").pop();
+        const attribute = $(e.target).attr("name");
+        if (filename) { // Do nothing on cancel
+            this.setState({ [`${attribute}File`] : UPLOAD_TEXT });
+            this.props.onUpload(e, filename);
+        }
+    }
+
+    _uploadIcon = (attribute) => {
+        return this._hasSubmit(attribute) ? "fa-check-circle-o" : "fa-upload";
     }
 
     render() {
@@ -57,22 +66,28 @@ class ApplicantDocuments extends React.Component {
                 <div className="single-upload-container">
                     <label className="upload-label">Resume</label>
                     <input type="file" name={Attributes.RESUME} id="resume-upload"
-                        accept={FileInputs.RESUME} onChange={this._handleFileSelect} />
-                    <label className={`button upload-button upload-${this.state.resumeSubmit}`}
-                        htmlFor="resume-upload">
-                        <span className={this._generateIcon(Attributes.RESUME)} />
-                        {this.state.resumeFile}
+                        accept={FileInputs.RESUME}
+                        onChange={this._handleFileSelect} />
+                    <label className={`button upload-button
+                            upload-${this._hasSubmit(Attributes.RESUME)}`}
+                            htmlFor="resume-upload">
+                        <span className={`fa
+                            ${this._uploadIcon(Attributes.RESUME)}`} />
+                        { this.state.resumeFile }
                     </label>
                     { this._renderDocumentViewer(Attributes.RESUME) }
                 </div>
                 <div className="single-upload-container">
                     <label className="upload-label">Picture</label>
                     <input type="file" name={Attributes.PICTURE}
-                        id="picture-upload" accept={FileInputs.PICTURE} onChange={this._handleFileSelect} />
-                    <label className={`button upload-button upload-${this.state.pictureSubmit}`}
-                        htmlFor="picture-upload">
-                        <span className={this._generateIcon(Attributes.PICTURE)} />
-                        {this.state.pictureFile}
+                        id="picture-upload" accept={FileInputs.PICTURE}
+                        onChange={this._handleFileSelect} />
+                    <label className={`button upload-button
+                            upload-${this._hasSubmit(Attributes.PICTURE)}`}
+                            htmlFor="picture-upload">
+                        <span className={`fa
+                            ${this._uploadIcon(Attributes.PICTURE)}`} />
+                        { this.state.pictureFile }
                     </label>
                     { this._renderDocumentViewer(Attributes.PICTURE) }
                 </div>

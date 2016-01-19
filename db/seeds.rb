@@ -14,7 +14,7 @@ def make_applicants
       major: "EECS",
       gpa: 4.0,
       units: 15,
-      phone: "4085556582"
+      phone: FFaker::PhoneNumber.short_phone_number
     )
   end
 end

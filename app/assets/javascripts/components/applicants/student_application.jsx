@@ -64,14 +64,14 @@ class StudentApplication extends AltComponent {
         return formData;
     }
 
-    _onUpload = (e) => {
+    _onUpload = (e, filename) => {
         const formData = this._createFormData(e);
         const attribute = $(e.target).attr("name");
         const extraFields = { processData : false, contentType : false };
-        const toggleFunc = this._toggleButton(e.target);
-        toggleFunc(); // Temporarily disable upload button
+        const ensure = this._toggleButton(e.target);
+        ensure(); // Temporarily disable upload button
         ApplicantActions.uploadDocument(this.props.applicant_id, formData,
-            extraFields, attribute, this.state.applicant, toggleFunc);
+            extraFields, attribute, this.state.applicant, filename, ensure);
     }
 
     render() {

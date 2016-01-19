@@ -1,14 +1,10 @@
 /* Helper class to make AJAX requests */
 class Requester {
 
-    _postErrorHandler(xhr, status, error) {
+    _errorHandler(xhr, status, error) {
         JSON.parse(xhr.responseText).errors.forEach((error) => {
             toastr.error(error);
         });
-    }
-
-    _getErrorHandler(xhr, status, error) {
-        console.error(xhr, status, error.toString());
     }
 
     _attemptAjax(endpoint, type, data, extra, onSuccess, onError, onComplete) {
@@ -22,7 +18,8 @@ class Requester {
                 onSuccess(msg);
             },
             error: (xhr, status, error) => {
-                onError(xhr, status, error);
+                if (onError) { onError() }
+                this._errorHandler(xhr, status, error);
             },
             complete: (_xhr, _status) => {
                 if (onComplete) { onComplete() }
@@ -30,24 +27,22 @@ class Requester {
         }));
     }
 
-    post(endpoint, data, success, extraFields, ensure) {
+    post(endpoint, data, success, extraFields, error, ensure) {
         this._attemptAjax(endpoint, 'POST', data, extraFields, success,
-            this._postErrorHandler, ensure);
+            error, ensure);
     }
 
     getJSON(endpoint, success, data) {
         this._attemptAjax(`${endpoint}.json`, 'GET', data,
-            { dataType : 'json' }, success, this._getErrorHandler);
+            { dataType : 'json' }, success)
     }
 
     put(endpoint, data, success, extraFields) {
-        this._attemptAjax(endpoint, 'PUT', data, extraFields, success,
-            this._postErrorHandler);
+        this._attemptAjax(endpoint, 'PUT', data, extraFields, success);
     }
 
     delete(endpoint, success, data, extraFields) {
-        this._attemptAjax(endpoint, 'DELETE', data, extraFields, success,
-            this._postErrorHandler);
+        this._attemptAjax(endpoint, 'DELETE', data, extraFields, success);
     }
 }
 

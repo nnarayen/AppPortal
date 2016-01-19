@@ -4,7 +4,8 @@
         constructor() {
             this.generateActions(
                 'storeApplicant',
-                'addAttribute'
+                'addAttribute',
+                'deleteAttribute'
             );
         }
 
@@ -26,11 +27,11 @@
             return true;
         }
 
-        uploadDocument(id, params, extraFields, attribute, applicant, ensure) {
-            this.storeApplicant(applicant);
-            const resolve = (resp) => this.addAttribute(resp.resource, attribute);
+        uploadDocument(id, params, extraFields, attribute, applicant, file, ensure) {
+            const resolve = (resp) => this.addAttribute(resp.resource, applicant, attribute, file);
+            const error = () => this.deleteAttribute(attribute);
             APIRequester.post(APIConstants.applicants.upload(id, attribute),
-                params, resolve, extraFields, ensure);
+                params, resolve, extraFields, error, ensure);
             return true;
         }
     }

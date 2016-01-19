@@ -89,7 +89,7 @@ class Applicant < ActiveRecord::Base
   end
 
   def self.accepted
-    Applicant.current.select(&:accepted?)
+    current.select(&:accepted?)
   end
 
   def accepted?
@@ -97,7 +97,7 @@ class Applicant < ActiveRecord::Base
   end
 
   def self.rejected
-    Applicant.current.select(&:rejected?)
+    current.select(&:rejected?)
   end
 
   def rejected?
