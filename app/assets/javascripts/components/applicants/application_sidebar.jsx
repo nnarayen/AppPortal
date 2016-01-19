@@ -25,7 +25,10 @@ class ApplicationSidebar extends AltComponent {
     }
 
     _smoothScroll = (e) => {
-        $.smoothScroll({ scrollTarget : $(e.currentTarget).attr("data-target") });
+        $.smoothScroll({ 
+            scrollTarget : $(e.currentTarget).attr("data-target"),
+            offset : -80
+        });
     }
 
     _calculateProgress(category) {

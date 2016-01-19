@@ -1,0 +1,166 @@
+.apply-container {
+  padding: 25px 15px;
+}
+
+.apply-toc {
+  padding-top: 20px;
+  position: fixed;
+  width: 270px;
+
+  .sidebar-label {
+    cursor: pointer;
+    padding: 6px 5px;
+
+    &:hover {
+      background: $gray-light-48;
+    }
+  }
+
+  .progress {
+    background-color: transparent;
+    box-shadow: none;
+    margin-left: 5px;
+  }
+}
+
+.toc-title {
+  font-size: $f-size-lg;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.apply-title {
+  margin-top: 0;
+}
+
+.category-title {
+  font-size: $f-size-xxl;
+  margin-bottom: 25px;
+}
+
+.text-response {
+  margin-bottom: 15px;
+
+  .question-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .char-remaining-label {
+    color: $gray-dark-72;
+    display: block;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+
+  textarea {
+    @include appearance(none);
+    border: 1px solid $gray-light;
+    outline: none;
+    padding: 7px;
+    min-width: 400px;
+    min-height: 100px;
+    resize: vertical;
+
+    &:focus {
+      border-color: $gray-dark-48;
+    }
+  }
+}
+
+.radio-response {
+  margin-bottom: 20px;
+
+  .question-label {
+    display: block;
+  }
+
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+}
+
+
+.input-response {
+  margin-bottom: 15px;
+
+  .question-label {
+    display: block;
+  }
+}
+
+.upload-container {
+  margin-bottom: 25px;
+}
+
+.single-upload-container {
+  display: inline-block;
+  padding: 0 10px;
+  vertical-align: top;
+  width: 50%;
+}
+
+.upload-label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.upload-button {
+  cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
+  span {
+    margin-right: 5px;
+  }
+
+  &:hover {
+    border-color: $blue-84;
+  }
+}
+
+.upload-view-link {
+  display: block;
+}
+
+.upload-true {
+  border-color: $blue;
+  color: $blue;
+}
+
+#resume-upload,
+#picture-upload {
+  display: none;
+}
+
+.save-button {
+  margin-right: 10px;
+}
+
+@media (max-width: 991px) {
+  .apply-toc {
+    margin-bottom: 20px;
+    padding-top: 0;
+    position: relative;
+  }
+
+  .toc-title {
+    font-size: $f-size-xl;
+  }
+
+  .apply-title {
+    font-size: $f-size-xxl;
+  }
+
+  .text-response {
+    textarea {
+      min-width: 0;
+      width: 100%;
+    }
+  }
+
+  input[type="text"] {
+    width: 100%;
+  }
+}

@@ -41,7 +41,7 @@ class SectionView extends React.Component {
         const scrollTarget = ScrollTargets[this.props.type];
         return (
             <div className={`section-responses scroll-${scrollTarget}`}>
-                <h2>
+                <h2 className="category-title">
                     { CategoryTitles[this.props.type] }
                 </h2>
                 { this.props.responses.map(this._mapResponses) }

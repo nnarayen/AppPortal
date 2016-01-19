@@ -8,7 +8,7 @@ class RegistrationModal extends DefaultForm {
     _renderInput(name, label, type, placeholder = null, focus = null) {
         const ref = focus ? "focus" : "submit";
         return (
-            <fieldset className="input-container">
+            <fieldset className="input-container register-input-container">
                 <label>{label}</label>
                 <input type={type} name={name} ref={ref} placeholder={placeholder}
                     onKeyDown={this._handleKeydown} onChange={this._handleChange} />
@@ -20,7 +20,7 @@ class RegistrationModal extends DefaultForm {
         return (
             <div>
                 <a onClick={this._focusInputField} data-toggle="modal"
-                    data-target="#registrationModal">
+                    className="register-link" data-target="#registrationModal">
                     Create an Account
                 </a>
                 <div className="modal fade" id="registrationModal" tabIndex={-1}
@@ -28,7 +28,7 @@ class RegistrationModal extends DefaultForm {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h4 className="modal-title">Create New Account</h4>
+                                <h1 className="modal-title">Create New Account</h1>
                             </div>
                             <div className="modal-body">
                                 { this._renderInput("email", "Email", "text", "email@berkeley.edu", "focus") }
@@ -41,7 +41,7 @@ class RegistrationModal extends DefaultForm {
                                     Cancel
                                 </button>
                                 <button type="button" name="submit"
-                                        className="submit-button"
+                                        className="button submit-button"
                                         onClick={this._attemptSubmit}>
                                     Create
                                 </button>

@@ -79,16 +79,17 @@ class StudentApplication extends AltComponent {
             <div>
                 <ApplicantInfo applicant = {this.state.applicant}
                                onChange  = {this._onChange(Attributes.APPLICANT)} />
+                <hr />
                 <Application responses = {this.state.applicant.responses}
                              onChange  = {this._onResponseChange}
                              view      = {ApplicationView.STUDENT} />
                 <ApplicantDocuments applicant = {this.state.applicant}
                                     onUpload  = {this._onUpload} />
-                <button type="button" name="save" className="save-button"
+                <button type="button" name="save" className="button save-button"
                         onClick={this._attemptSave}>
                     Save
                 </button>
-                <button type="button" name="submit" className="submit-button"
+                <button type="button" name="submit" className="button submit-button"
                         onClick={this._attemptSubmit}>
                     Submit
                 </button>
