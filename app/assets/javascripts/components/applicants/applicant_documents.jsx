@@ -1,5 +1,5 @@
 /* Enum for accepted file types */
-const FILE_INPUTS = {
+const FileInputs = {
     RESUME  : "application/pdf",
     PICTURE : "image/*"
 }
@@ -28,7 +28,7 @@ class ApplicantDocuments extends React.Component {
             return (
                 <a href={this.props.applicant[attribute]} target="_blank"
                     className="upload-view-link">
-                    { `View ${attribute}` }
+                    { `View uploaded ${attribute}` }
                 </a>
             );
         }
@@ -46,21 +46,18 @@ class ApplicantDocuments extends React.Component {
     }
 
     _generateIcon = (attribute) => {
-        return "fa " + ((this.state[`${attribute}Status`]) ?
+        return "fa " + ((this.state[`${attribute}Submit`]) ?
             "fa-check-circle-o" : "fa-upload");
     }
 
     render() {
-        const resumeIcon = "fa " + (this.state.resumeSubmit ?  "fa-check-circle-o" : "fa-upload");
-        const pictureIcon = "fa " + (this.state.pictureSubmit ?  "fa-check-circle-o" : "fa-upload");
-
         return (
             <div className={`upload-container scroll-${ScrollTargets.UPLOAD}`}>
                 <h2 className="category-title">{CategoryTitles.UPLOAD}</h2>
                 <div className="single-upload-container">
                     <label className="upload-label">Resume</label>
                     <input type="file" name={Attributes.RESUME} id="resume-upload"
-                        accept={FILE_INPUTS.RESUME} onChange={this._handleFileSelect} />
+                        accept={FileInputs.RESUME} onChange={this._handleFileSelect} />
                     <label className={`button upload-button upload-${this.state.resumeSubmit}`}
                         htmlFor="resume-upload">
                         <span className={this._generateIcon(Attributes.RESUME)} />
@@ -71,7 +68,7 @@ class ApplicantDocuments extends React.Component {
                 <div className="single-upload-container">
                     <label className="upload-label">Picture</label>
                     <input type="file" name={Attributes.PICTURE}
-                        id="picture-upload" accept={FILE_INPUTS.PICTURE} onChange={this._handleFileSelect} />
+                        id="picture-upload" accept={FileInputs.PICTURE} onChange={this._handleFileSelect} />
                     <label className={`button upload-button upload-${this.state.pictureSubmit}`}
                         htmlFor="picture-upload">
                         <span className={this._generateIcon(Attributes.PICTURE)} />

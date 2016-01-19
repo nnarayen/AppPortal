@@ -37,7 +37,8 @@ module Api
       applicant = Applicant.find(params[:applicant_id])
       if applicant.attempt_submit(update_params)
         render_json_message(:ok, message: "Application submitted!",
-                                 resource: applicant.serialize)
+                                resource: applicant.serialize,
+                                to: applicant_apply_path(applicant))
       else
         render_json_message(:forbidden, errors: ["No field can be left blank."])
       end

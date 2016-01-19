@@ -22,7 +22,7 @@ class TextQuestion extends React.Component {
                 <textarea className="response-text"
                     name={this.props.response.id}
                     value={this.props.response.answer}
-                    maxLength={this.props.response.limit}
+                    maxLength={this.props.response.question.limit}
                     readOnly={this.props.view == ApplicationView.ADMIN}
                     onChange={this.props.onChange} />
             </div>
@@ -80,8 +80,8 @@ class RadioQuestion extends React.Component {
 
     render() {
         const disable = this.props.view == ApplicationView.ADMIN;
-        const yesId = this.props.response.id + "-yes";
-        const noId = this.props.response.id + "-no"
+        const yesId = `${this.props.response.id}-yes`;
+        const noId = `${this.props.response.id}-no`;
         return (
             <div className="radio-response">
                 <label className="question-label">

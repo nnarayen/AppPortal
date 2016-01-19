@@ -8,7 +8,7 @@ class RegistrationModal extends DefaultForm {
     _renderInput(name, label, type, placeholder = null, focus = null) {
         const ref = focus ? "focus" : "submit";
         return (
-            <fieldset className="input-container">
+            <fieldset className="input-container register-input-container">
                 <label>{label}</label>
                 <input type={type} name={name} ref={ref} placeholder={placeholder}
                     onKeyDown={this._handleKeydown} onChange={this._handleChange} />
