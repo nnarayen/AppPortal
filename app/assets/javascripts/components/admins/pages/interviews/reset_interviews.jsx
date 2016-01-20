@@ -8,7 +8,7 @@ class ResetInterviews extends React.Component {
     render() {
         return (
             <div className="reset-container">
-                <button type="button" className="reset-button"
+                <button type="button" className="button reset-button"
                         onClick={this._resetInterviews}>
                     Reset Interviews
                 </button>

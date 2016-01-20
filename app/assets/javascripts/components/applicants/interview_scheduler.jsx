@@ -23,7 +23,6 @@ class InterviewScheduler extends AltComponent {
     }
 
     _mapInterview = (interview) => {
-        console.log(interview)
         return (
             <div className="interview-option" key={interview.id}>
                 <input name="interview" type="radio" id={interview.id}

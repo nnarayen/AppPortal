@@ -4,7 +4,7 @@ module Api
     before_action :authenticate_admin!, except: [:index]
 
     def index
-      interviews = (current_applicant) ? Interview.all : Interview.all
+      interviews = (current_applicant) ? Interview.available : Interview.all
       render json: interviews, each_serializer: InterviewSerializer
     end
 

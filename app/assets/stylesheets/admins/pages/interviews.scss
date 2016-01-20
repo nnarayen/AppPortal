@@ -56,3 +56,26 @@
     color: $red;
   }
 }
+
+.interview-scheduler {
+  margin-top: 30px;
+
+  .interview-option {
+    input[type="radio"] {
+      margin-right: 7px;
+    }
+  }
+}
+
+.schedule-button {
+  margin-top: 20px;
+}
+
+.create-interview {
+  margin: 20px 0;
+}
+
+.datepicker-input-container {
+  display: inline-block;
+  margin-right: 10px;
+}
