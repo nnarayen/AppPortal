@@ -19,7 +19,7 @@ class DecisionButtons extends React.Component {
         const buttons = _.keys(DecisionTypes).map((key) => {
             return (
                 <button type="button" name={DecisionTypes[key]} key={key}
-                        className="decision-button" onClick={this._attemptDecision}>
+                        className="button decision-button" onClick={this._attemptDecision}>
                     { key }
                 </button>
             );

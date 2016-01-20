@@ -14,12 +14,13 @@ class UpdateDeadline extends AltComponent {
 
     render() {
         return (
-            <div className="create-interview">
+            <div className="update-deadline-container">
                 <h3>Application Deadline</h3>
                 <DatePicker value         = {this.state.date}
                             onDateChange  = {this._onDateChange}
                             onInputChange = {this._onInputChange} />
-                <button type="button" onClick={this._updateDeadline}>
+                <button type="button" onClick={this._updateDeadline}
+                    className="button">
                     Update Deadline
                 </button>
             </div>

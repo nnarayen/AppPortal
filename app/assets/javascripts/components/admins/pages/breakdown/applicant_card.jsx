@@ -16,12 +16,16 @@ class ApplicantCard extends React.Component {
         return (
             <div className="applicant-card">
                 <a href={`/applicants/${this.props.applicant.id}`}>
-                    <img className="applicant-small-img"
-                        src={this.props.applicant.picture} />
-                    { this._renderInfo("Name", "full_name") }
-                    { this._renderInfo("Year", "year") }
-                    { this._renderInfo("GPA", "gpa") }
-                    { this._renderInfo("Major", "major") }
+                    <div className="applicant-card-img">
+                        <img className="applicant-small-img"
+                            src={this.props.applicant.picture} />
+                    </div>
+                    <div className="applicant-info-container">
+                        { this._renderInfo("Name", "full_name") }
+                        { this._renderInfo("Year", "year") }
+                        { this._renderInfo("GPA", "gpa") }
+                        { this._renderInfo("Major", "major") }
+                    </div>
                 </a>
             </div>
         );

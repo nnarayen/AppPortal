@@ -23,7 +23,7 @@ class ApplicantRow extends React.Component {
 
     render() {
         return (
-            <tr onClick={this._onRowClick}>
+            <tr className="applicant-table-row" onClick={this._onRowClick}>
                 <td>
                     { this.props.applicant.full_name }
                 </td>

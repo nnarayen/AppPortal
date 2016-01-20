@@ -44,3 +44,4 @@ make_questions
 make_applicants
 make_admins
 make_emails
+make_settings

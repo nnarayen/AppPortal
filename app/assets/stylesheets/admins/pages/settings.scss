@@ -1,0 +1,22 @@
+.advance-portal-container {
+  margin-bottom: 10px;
+
+  label {
+    margin-right: 5px;
+  }
+}
+
+.update-deadline-container {
+  margin-top: 40px;
+}
+
+.table tbody {
+  tr .applicant-cell {
+    font-weight: bold;
+    vertical-align: middle;
+
+    a {
+      color: $gray-dark-84;
+    }
+  }
+}

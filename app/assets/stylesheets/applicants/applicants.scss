@@ -3,20 +3,97 @@
 
 .admin-application {
   .admin-applicant-info {
+    margin-top: 20px;
+
     .applicant-large-img {
-      float: left;
+      margin-bottom: 30px;
+      width: 210px;
 
       img {
-        height: 210px;
-        width: 210px;
+        border-radius: 4px;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
       }
     }
   }
 
+  .applicant-name {
+    margin: 0;
+    margin-bottom: 15px;
+  }
+
+  .applicant-details {
+    margin-bottom: 15px;
+    padding-left: 0;
+  }
+
+  .detail-label {
+    color: $gray-dark-60;
+    margin: 0;
+    margin-bottom: 7px;
+  }
+
+  .detail {
+    font-size: $f-size-lg;
+    font-weight: bold;
+    margin: 0;
+  }
+
   .applicant-resume {
     object {
-      width: 830px;
+      max-width: 830px;
+      width: 100%;
       height: 1070px;
+    }
+  }
+
+  textarea.response-text {
+    min-height: 230px;
+    width: 50%;
+  }
+
+  .comment-section {
+    margin-bottom: 40px;
+  }
+
+  .comment {
+    margin-bottom: 6px;
+  }
+
+  .comment-name {
+    margin-right: 7px;
+  }
+
+  .empty-comments {
+    margin: 15px 0;
+  }
+
+  .comment-input-container {
+    display: inline-block;
+    margin-right: 15px;
+    margin-top: 15px;
+  }
+
+  .decision-buttons {
+    margin-bottom: 100px;
+
+    .button {
+      margin-right: 10px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .admin-applicant-info {
+      margin-top: 10px;
+
+      .applicant-large-img {
+          width: 150px;
+      }
+    }
+
+    textarea.response-text {
+      width: 100%;
     }
   }
 }
