@@ -5,10 +5,13 @@ class ResetPassword extends DefaultForm {
 
     constructor(props) {
         super(props);
-        this.state = { token : this.props.token };
+        this.state = {
+            token    : this.props.token,
+            password : ""
+        };
     }
 
-    _attemptReset = (e) => {
+    _attemptSubmit = (e) => {
         this._attemptAction(APIConstants.passwords.reset, this.state);
     }
 
@@ -16,8 +19,7 @@ class ResetPassword extends DefaultForm {
         return (
             <div className="reset-form">
                 <form>
-                    { this._renderInput("email", "Email", "text", "email@berkeley.edu", "focus") }
-                    { this._renderInput("password", "Password", "password") }
+                    { this._renderInput("password", "New Password", "password") }
                     { this._renderInput("password_confirmation", "Password Confirmation", "password") }
                     <fieldset className="input-container">
                         <label>Password Token</label>
@@ -26,7 +28,7 @@ class ResetPassword extends DefaultForm {
                     </fieldset>
                     <input type="button" value="Reset Password"
                         className="submit-button reset-button"
-                        onClick={this._attemptReset} />
+                        onClick={this._attemptSubmit} />
                 </form>
             </div>
         );

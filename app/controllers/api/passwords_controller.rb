@@ -10,13 +10,14 @@ module Api
     end
 
     def reset
-      applicant = Applicant.find_by!(email: params[:email])
-      if applicant.update_password(password_params, params[:token])
-        render_json_message(:ok, message: "Password successfully updated!",
-                                 to: root_path)
-      end
+      applicant = Applicant.find_by!(token: params[:token])
+      applicant.update_password(password_params)
+      render_json_message(:ok, message: "Password successfully updated!",
+                               to: root_path)
     rescue
-      render_json_message(:forbidden, errors: ["Error resetting password."])
+      errors = applicant.try(:errors).try(:full_messages)
+      errors = ["Invalid token provided."] if errors.blank?
+      render_json_message(:forbidden, errors: errors)
     end
 
     private

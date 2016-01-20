@@ -129,8 +129,8 @@ class Applicant < ActiveRecord::Base
     update!(token: SecureRandom.urlsafe_base64)
   end
 
-  def update_password(password_params, new_token)
-    update!(password_params.merge(token: nil)) if token == new_token
+  def update_password(password_params)
+    update!(password_params.merge(token: nil))
   end
 
   private
