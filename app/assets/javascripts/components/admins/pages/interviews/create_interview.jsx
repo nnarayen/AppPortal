@@ -17,7 +17,7 @@ class CreateInterview extends AltComponent {
                             onDateChange  = {this._onDateChange}
                             onInputChange = {this._onInputChange} />
                 <button type="button" onClick={this._createInterview}
-                    className="button submit-button">
+                        className="button submit-button">
                     Create Interview
                 </button>
             </div>

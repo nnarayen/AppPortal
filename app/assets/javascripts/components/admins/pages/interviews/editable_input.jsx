@@ -22,9 +22,9 @@ class EditableInput extends React.Component {
     }
 
     render() {
-        const edit = `edit-${this.props.editable}`;
         return (
-            <fieldset className={`input-container inline-input-container timeslot-edit ${edit}`}>
+            <fieldset className={`input-container inline-input-container
+                    timeslot-edit edit-${this.props.editable}`}>
                 <div className="input-box-container">
                     { this._renderInput() }
                 </div>
@@ -37,5 +37,5 @@ EditableInput.propTypes = {
     data         : React.PropTypes.string.isRequired,
     editable     : React.PropTypes.bool.isRequired,
     handleChange : React.PropTypes.func.isRequired,
-    toggleEdit   : Readt.PropTypes.func.isRequired
+    toggleEdit   : React.PropTypes.func.isRequired
 };

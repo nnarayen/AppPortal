@@ -45,7 +45,8 @@ class EditableTimeslot extends AltComponent {
         if (this.state.editable) {
             updateButtons = (
                 <div className="update-buttons-container">
-                    <button className="button-small submit-button save-timeslot-button"
+                    <button className="button-small submit-button
+                            save-timeslot-button"
                             onClick={this._attemptUpdate}>
                         <span className="fa fa-floppy-o"/>
                         Save
@@ -68,7 +69,7 @@ class EditableTimeslot extends AltComponent {
                 <EditableInput data         = {formattedTime}
                                editable     = {this.state.editable}
                                handleChange = {this._onInputChange}
-                               toggleEdit   = {this._toggleEdit }/>
+                               toggleEdit   = {this._toggleEdit} />
                 { this._renderUpdateButtons() }
             </div>
         )
