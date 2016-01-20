@@ -5,8 +5,9 @@
   outline: none;
   padding: 7px;
   width: 100%;
-  max-width: 600px;
+  max-width: 650px;
   margin-bottom: 15px;
+  min-height: 300px;
 
   &:focus {
     border-color: $gray-dark-48;

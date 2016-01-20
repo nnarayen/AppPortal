@@ -20,7 +20,7 @@ class AdminApplicantInfo extends React.Component {
                 </div>
                 <div className="col-md-7 col-sm-7">
                     <h2 className="applicant-name">
-                        {this.props.applicant["full_name"]}
+                        {this.props.applicant.full_name}
                     </h2>
                     { this._renderInput("major", "Major") }
                     { this._renderInput("year", "Year") }

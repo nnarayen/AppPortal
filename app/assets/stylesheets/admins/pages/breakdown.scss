@@ -7,13 +7,12 @@
 
 .applicant-card {
   display: block;
-  border: 1px solid $gray-dark-24;
+  border: 1px solid $gray-dark-36;
   overflow: hidden;
-  margin-bottom: 20px;
   position: relative;
 
   &:hover {
-    border-color: $gray-dark-48;
+    border-color: $gray-dark-60;
   }
 
   a {
@@ -31,6 +30,7 @@
   .applicant-small-img {
     height: 100%;
     width: 100%;
+    object-fit: cover;
   }
 
   .applicant-info-container {
