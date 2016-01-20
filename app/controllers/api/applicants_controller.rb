@@ -37,8 +37,8 @@ module Api
       applicant = Applicant.find(params[:applicant_id])
       if applicant.attempt_submit(update_params)
         render_json_message(:ok, message: "Application submitted!",
-                                resource: applicant.serialize,
-                                to: applicant_apply_path(applicant))
+                                 resource: applicant.serialize,
+                                 to: applicant_apply_path(applicant))
       else
         render_json_message(:forbidden, errors: ["No field can be left blank."])
       end
@@ -65,11 +65,13 @@ module Api
 
     def schedule
       applicant = Applicant.find(params[:applicant_id])
-      applicant.schedule_interview(params[:interview])
+      applicant.schedule_interview(interview_params.symbolize_keys)
       render_json_message(:ok, message: "Interview scheduled!",
                                to: applicant_interview_path(applicant))
     rescue
-      render_json_message(:forbidden, errors: applicant.errors.full_messages)
+      errors = applicant.errors.full_messages
+      errors << ["Interview can't be blank"] if errors.blank?
+      render_json_message(:forbidden, errors: errors)
     end
 
     private
@@ -82,6 +84,10 @@ module Api
 
     def upload_params
       params.permit(:category, :file)
+    end
+
+    def interview_params
+      params.permit(:interview)
     end
   end
 end

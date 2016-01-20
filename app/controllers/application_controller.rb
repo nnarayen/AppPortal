@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   devise_group :user, contains: [:applicant, :admin]
 
   # Handle unauthorized requests
-  rescue_from(CanCan::AccessDenied) do |exception|
+  rescue_from(CanCan::AccessDenied) do
     redirect_to root_path
   end
 

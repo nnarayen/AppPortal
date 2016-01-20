@@ -116,8 +116,8 @@ class Applicant < ActiveRecord::Base
     stage == Settings.instance.stage
   end
 
-  def schedule_interview(interview_id)
-    update!(interview_id: interview_id)
+  def schedule_interview(interview:)
+    update!(interview_id: interview)
   end
 
   def advance
