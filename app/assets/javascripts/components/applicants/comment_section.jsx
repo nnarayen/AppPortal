@@ -18,18 +18,20 @@ class CommentSection extends AltComponent {
         });
 
         const emptyComments = (
-            <h3 className="empty-comments">
-                No comments for this applicant!
-            </h3>
+            <p className="empty-comments">
+                No comments for this applicant. Add one below!
+            </p>
         );
 
         return (
             <div className="comment-section">
                 <h2>Comment Section</h2>
                 { comments.length > 0 ? comments : emptyComments }
-                <input onChange={this._onInputChange} name="text"
-                    placeholder="Add a comment!" />
-                <button type="button" className="comment-button"
+                <div className="input-container comment-input-container">
+                    <input onChange={this._onInputChange} name="text"
+                        type="text" placeholder="Add a comment!" />
+                </div>
+                <button type="button" className="button submit-button"
                         onClick={this._attemptComment}>
                     Post Comment
                 </button>

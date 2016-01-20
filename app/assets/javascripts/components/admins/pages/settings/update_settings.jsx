@@ -30,12 +30,12 @@ class UpdateSettings extends AltComponent {
                     <label>Current stage:</label>
                     { `${this.state.settings.formatted_stage} stage` }
                 </div>
-                <button type="button" className="progress-button"
+                <button type="button" className="button progress-button"
                         onClick={this._attemptAdvance}>
                     Advance Portal
                 </button>
                 <UpdateDeadline deadline = {formattedDeadline} />
-                <button type="button" className="reset-button"
+                <button type="button" className="button reset-button"
                         onClick={this._resetApplication}>
                     Reset Portal
                 </button>

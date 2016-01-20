@@ -9,3 +9,19 @@ $icon-list: "\f00d" "\f128" "\f00c";
     }
   }
 }
+
+.search-applicant-container {
+  margin: 25px 0 15px;
+}
+
+table tbody .applicant-table-row {
+  cursor: pointer;
+
+  &:hover {
+    background: $gray-light-48;
+  }
+
+  td {
+    padding: 12px 8px;
+  }
+}
