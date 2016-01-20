@@ -34,7 +34,7 @@ class EditableTimeslot extends AltComponent {
         if (!this.state.editable) {
             editButton = (
                 <span onClick={this._toggleEdit} className="fa
-                    fa-pencil-square-o" />
+                    fa-pencil-square-o edit-timeslot-button" />
             );
         }
         return editButton;
@@ -45,8 +45,16 @@ class EditableTimeslot extends AltComponent {
         if (this.state.editable) {
             updateButtons = (
                 <div className="update-buttons-container">
-                    <span className="fa fa-floppy-o" onClick={this._attemptUpdate} />
-                    <span className="fa fa-trash" onClick={this._attemptDelete} />
+                    <button className="button-small submit-button save-timeslot-button"
+                            onClick={this._attemptUpdate}>
+                        <span className="fa fa-floppy-o"/>
+                        Save
+                    </button>
+                    <button className="button-small delete-timeslot-button"
+                            onClick={this._attemptDelete}>
+                        <span className="fa fa-trash-o"/>
+                        Delete
+                    </button>
                 </div>
             );
         }
@@ -57,10 +65,10 @@ class EditableTimeslot extends AltComponent {
         const formattedTime = formatDateTime(this.state.interview.timeslot);
         return (
             <div className="editable-timeslot-container">
-                { this._renderEditButton() }
                 <EditableInput data         = {formattedTime}
                                editable     = {this.state.editable}
-                               handleChange = {this._onInputChange} />
+                               handleChange = {this._onInputChange}
+                               toggleEdit   = {this._toggleEdit }/>
                 { this._renderUpdateButtons() }
             </div>
         )

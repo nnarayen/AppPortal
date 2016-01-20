@@ -62,6 +62,11 @@ input[type="button"] {
   }
 }
 
+.button-small {
+  @extend .button;
+  padding: 4px 7px;
+}
+
 .input-container {
   margin-bottom: 15px;
 

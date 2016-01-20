@@ -16,9 +16,17 @@ class EditableInput extends React.Component {
         }
     }
 
+    _toggleEdit = () => {
+      if (!this.props.editable) {
+        this.props.toggleEdit();
+      }
+    }
+
     render() {
+        const edit = `edit-${this.props.editable}`;
         return (
-            <fieldset className="input-container inline-input-container">
+            <fieldset className={`input-container inline-input-container timeslot-edit ${edit}`}
+                onClick={this._toggleEdit}>
                 <div className="input-box-container">
                     { this._renderInput() }
                 </div>
