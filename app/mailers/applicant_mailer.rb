@@ -6,4 +6,11 @@ class ApplicantMailer < ActionMailer::Base
          from: ENV['TBG_EMAIL'],
          subject: "The Berkeley Group Application Status"
   end
+
+  def password_email(applicant)
+    @applicant = applicant
+    mail to: applicant.email,
+         from: ENV['TBG_EMAIL'],
+         subject: "The Berkeley Group Reset Password Instructions"
+  end
 end

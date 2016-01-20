@@ -49,6 +49,7 @@
   }
 }
 
+.reset-container,
 .login-container {
   input[type="text"],
   input[type="password"] {
@@ -68,6 +69,6 @@ p.about-link {
   display: inline-block;
 }
 
-.register-input-container input {
+.full-input-container input {
   width: 100%;
 }

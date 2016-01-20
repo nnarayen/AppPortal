@@ -8,6 +8,13 @@ class ApiConstants {
         }
     }
 
+    get passwords() {
+        return {
+            reset      : `/api/passwords/reset`,
+            send_reset : `/api/passwords/send_reset`
+        }
+    }
+
     get applicants() {
         return {
             member     : (id) => `/api/applicants/${id}`,

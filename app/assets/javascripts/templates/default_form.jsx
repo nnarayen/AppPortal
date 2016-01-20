@@ -18,6 +18,17 @@ class DefaultForm extends React.Component {
         $(React.findDOMNode(this.refs.focus)).focus();
     }
 
+    _renderInput(name, label, type, placeholder = null, focus = null) {
+        const ref = focus ? "focus" : "submit";
+        return (
+            <fieldset className="input-container">
+                <label>{label}</label>
+                <input type={type} name={name} ref={ref} placeholder={placeholder}
+                    onKeyDown={this._handleKeydown} onChange={this._handleChange} />
+            </fieldset>
+        );
+    }
+
     _formFields() {
         // Necessary because bootstrap-select does not fire onChange events
         const extraFields = { };

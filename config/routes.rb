@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
+  get 'reset', to: 'pages#reset'
 
   devise_for :applicants, skip: [:sessions, :registrations, :passwords]
   devise_for :admins, skip: [:sessions, :registrations, :passwords]
 
   devise_scope :applicant do
-    post '/sign_up' => 'registrations#create'
-    post '/sign_in' => 'sessions#create', :as => :create_session
-    delete '/sign_out' => 'sessions#destroy', :as => :destroy_session
+    post '/sign_up', to: 'registrations#create'
+    post '/sign_in', to: 'sessions#create', as: :create_session
+    delete '/sign_out', to: 'sessions#destroy', as: :destroy_session
   end
 
   resources :applicants, only: [:show] do
@@ -25,6 +26,13 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
+    resources :passwords, only: [] do
+      collection do
+        post 'reset', to: 'passwords#reset'
+        post 'send_reset', to: 'passwords#send_reset'
+      end
+    end
+
     resources :applicants, only: [:index, :show, :update] do
       post 'submit', to: 'applicants#submit'
       post 'decide', to: 'applicants#decide'

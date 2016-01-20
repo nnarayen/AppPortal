@@ -28,6 +28,7 @@
 #  decisions              :integer          default([]), is an Array
 #  stage                  :integer          default(0)
 #  interview_id           :integer
+#  token                  :string
 #
 
 class Applicant < ActiveRecord::Base
@@ -122,6 +123,14 @@ class Applicant < ActiveRecord::Base
 
   def advance
     update!(stage: stage + 1)
+  end
+
+  def create_token
+    update!(token: SecureRandom.urlsafe_base64)
+  end
+
+  def update_password(password_params, new_token)
+    update!(password_params.merge(token: nil)) if token == new_token
   end
 
   private
