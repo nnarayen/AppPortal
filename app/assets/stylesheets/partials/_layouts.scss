@@ -18,7 +18,7 @@ body {
 .main-container {
   max-width: 1200px;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 70px;
 }
 
 .navbar {
@@ -44,7 +44,7 @@ input[type="button"] {
   background: transparent;
   border: 1px solid $gray-light;
   outline: none;
-  padding: 8px 10px;
+  padding: 7px 10px;
 
   &:hover {
     border-color: $gray-dark-48;
@@ -60,6 +60,11 @@ input[type="button"] {
       border-color: $blue;
     }
   }
+}
+
+.button-small {
+  @extend .button;
+  padding: 4px 7px;
 }
 
 .input-container {

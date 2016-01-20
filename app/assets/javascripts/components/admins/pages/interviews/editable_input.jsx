@@ -2,6 +2,7 @@
  * @prop data         - current input to render
  * @prop editable     - true if fields are editable
  * @prop handleChange - callback function when form inputs change
+ * @prop toggleEdit   - callback function to toggle editing
  */
 class EditableInput extends React.Component {
 
@@ -12,13 +13,18 @@ class EditableInput extends React.Component {
                     onChange={this.props.handleChange} />
             );
         } else {
-            return this.props.data;
+            return (
+                <div onClick={this.props.toggleEdit}>
+                   { this.props.data }
+                </div>
+            );
         }
     }
 
     render() {
+        const edit = `edit-${this.props.editable}`;
         return (
-            <fieldset className="input-container inline-input-container">
+            <fieldset className={`input-container inline-input-container timeslot-edit ${edit}`}>
                 <div className="input-box-container">
                     { this._renderInput() }
                 </div>
@@ -30,5 +36,6 @@ class EditableInput extends React.Component {
 EditableInput.propTypes = {
     data         : React.PropTypes.string.isRequired,
     editable     : React.PropTypes.bool.isRequired,
-    handleChange : React.PropTypes.func.isRequired
+    handleChange : React.PropTypes.func.isRequired,
+    toggleEdit   : Readt.PropTypes.func.isRequired
 };

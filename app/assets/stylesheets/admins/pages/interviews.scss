@@ -1,3 +1,81 @@
+.editable-timeslot-container {
+  padding: 4px 0;
+}
+
 .inline-input-container {
   display: inline-block;
+  margin-right: 15px;
+  margin-bottom: 0;
+}
+
+.timeslot-edit {
+  border: 1px solid transparent;
+  cursor: pointer;
+  padding: 6px 9px;
+  position: relative;
+
+  &:hover {
+    border-color: $gray-light;
+
+    &:after {
+      color: $gray-dark-48;
+      content: "click to edit";
+      position: absolute;
+      right: -60%;
+      top: 5px;
+    }
+  }
+
+  &.edit-true {
+    border-color: transparent;
+
+    &:after {
+      content: "";
+    }
+  }
+
+  input {
+    min-width: 0;
+  }
+
+}
+
+.update-buttons-container {
+  display: inline-block;
+
+  .fa {
+    cursor: pointer;
+    margin-right: 5px;
+  }
+
+  .save-timeslot-button {
+    margin-right: 10px;
+  }
+
+  .delete-timeslot-button {
+    color: $red;
+  }
+}
+
+.interview-scheduler {
+  margin-top: 30px;
+
+  .interview-option {
+    input[type="radio"] {
+      margin-right: 7px;
+    }
+  }
+}
+
+.schedule-button {
+  margin-top: 20px;
+}
+
+.create-interview {
+  margin: 20px 0;
+}
+
+.datepicker-input-container {
+  display: inline-block;
+  margin-right: 10px;
 }

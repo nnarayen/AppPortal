@@ -17,8 +17,10 @@ class DatePicker extends React.Component {
 
     render() {
         return (
-            <input ref="date" name="date" placeholder={this.props.placeholder}
-                value={this.props.value} onChange={this.props.onInputChange} />
+            <fieldset className="input-container datepicker-input-container">
+                <input ref="date" name="date" type="text" placeholder={this.props.placeholder}
+                    value={this.props.value} onChange={this.props.onInputChange} />
+            </fieldset>
         );
     }
 

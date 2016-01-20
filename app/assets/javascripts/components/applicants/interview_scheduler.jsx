@@ -38,7 +38,7 @@ class InterviewScheduler extends AltComponent {
         return (
             <div className="interview-scheduler">
                 { this.state.interviews.map(this._mapInterview) }
-                <button type="button" className="schedule-button"
+                <button type="button" className="button submit-button schedule-button"
                         onClick={this._scheduleInterview}>
                     Schedule Interview
                 </button>
