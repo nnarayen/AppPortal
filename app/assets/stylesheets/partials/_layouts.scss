@@ -112,6 +112,12 @@ input[type="button"] {
   }
 }
 
+.table tbody tr {
+  &:hover {
+    background: $gray-light-48;
+  }
+}
+
 .navbar-inverse .navbar-brand {
     color: $white;
 }
