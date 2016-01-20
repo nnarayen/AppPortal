@@ -7,14 +7,14 @@
       h2.hero-subtitle Application Portal
   
   .row
-    .about-container.col-md-6.col-sm-6
+    .about-container.col-md-7.col-sm-6
       h1 About TBG
       p.about-subtitle = t ".about-1"
       p.about-subtitle.about-link = t ".about-2"
       = link_to "here.", "http://theberkeleygroup.org"
       p.about-subtitle = t ".about-3"
       
-    .login-container.col-md-6.col-sm-6
+    .login-container.col-md-5.col-sm-6
       h1 Sign In
       = react_component "LoginModal"
       = react_component "RegistrationModal"
