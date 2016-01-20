@@ -1,14 +1,46 @@
 @import "partials/variables";
 @import "partials/layouts";
 
+.breakdown-title {
+  margin-bottom: 25px;
+}
+
 .applicant-card {
   display: block;
-  border: 2px solid $gray-dark;
+  border: 1px solid $gray-dark-24;
   overflow: hidden;
+  margin-bottom: 20px;
+  position: relative;
+
+  &:hover {
+    border-color: $gray-dark-48;
+  }
+
+  a {
+    color: initial;
+    text-decoration: none;
+  }
+
+  .applicant-card-img {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100px;
+  }
 
   .applicant-small-img {
-    height: 100px;
-    width: 100px;
-    float: left;
+    height: 100%;
+    width: 100%;
+  }
+
+  .applicant-info-container {
+    padding: 10px 0;
+    margin-left: 120px;
+  }
+
+  .applicant-info {
+    label {
+      margin-right: 5px;
+    }
   }
 }

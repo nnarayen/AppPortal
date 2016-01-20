@@ -1,0 +1,22 @@
+.email-content {
+  @include appearance(none);
+  border: 1px solid $gray-light;
+  display: block;
+  outline: none;
+  padding: 7px;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 15px;
+
+  &:focus {
+    border-color: $gray-dark-48;
+  }
+}
+
+.email-buttons-container {
+  margin-bottom: 30px;
+}
+
+.save-email-button {
+  margin-right: 10px;
+}

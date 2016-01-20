@@ -6,7 +6,7 @@ class Comment extends React.Component {
     render() {
         return (
             <div className="comment">
-                <label>{ `${this.props.comment.name}: ` }</label>
+                <label className="comment-name">{ `${this.props.comment.name}: ` }</label>
                 <span>{ this.props.comment.text }</span>
             </div>
         );

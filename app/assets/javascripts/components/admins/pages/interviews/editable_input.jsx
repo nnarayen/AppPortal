@@ -37,5 +37,5 @@ EditableInput.propTypes = {
     data         : React.PropTypes.string.isRequired,
     editable     : React.PropTypes.bool.isRequired,
     handleChange : React.PropTypes.func.isRequired,
-    toggleEdit   : Readt.PropTypes.func.isRequired
+    toggleEdit   : React.PropTypes.func.isRequired
 };

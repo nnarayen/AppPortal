@@ -37,14 +37,16 @@ class EmailComposer extends AltComponent {
                 <textarea className="email-content" name={this.props.type}
                     value={this.state[this.props.type]}
                     onChange={this._onInputChange} />
-                <button type="button" name="save" className="save-button"
-                        onClick={this._attemptSave}>
-                    Save Content
-                </button>
-                <button type="button" name="send" className="send-button"
-                        onClick={this._attemptSend}>
-                    Send Emails
-                </button>
+                <div className="email-buttons-container">
+                    <button type="button" name="save" className="button save-email-button"
+                            onClick={this._attemptSave}>
+                        Save Content
+                    </button>
+                    <button type="button" name="send" className="button submit-button"
+                            onClick={this._attemptSend}>
+                        Send Emails
+                    </button>
+                </div>
             </div>
         );
     }

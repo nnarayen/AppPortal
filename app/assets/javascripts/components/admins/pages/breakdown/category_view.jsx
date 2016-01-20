@@ -15,7 +15,7 @@ class CategoryView extends React.Component {
         return (
             <div className={`category-view category-${this.props.type}`}>
                 <div className="col-md-4">
-                    <h4>{`${this.props.type} Applicants (${applicants.length})`}</h4>
+                    <h4 className="breakdown-title">{`${this.props.type} Applicants (${applicants.length})`}</h4>
                     <div className="applicant-cards">
                         { applicants }
                     </div>

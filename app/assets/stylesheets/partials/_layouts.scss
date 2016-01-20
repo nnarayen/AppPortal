@@ -18,7 +18,7 @@ body {
 .main-container {
   max-width: 1200px;
   margin: 0 auto;
-  margin-top: 70px;
+  margin-top: 30px;
 }
 
 .navbar {
@@ -42,7 +42,7 @@ input[type="password"] {
 input[type="button"] {
   @include appearance(none);
   background: transparent;
-  border: 1px solid $gray-light;
+  border: 1px solid $gray-dark-24;
   outline: none;
   padding: 7px 10px;
 
@@ -110,4 +110,12 @@ input[type="button"] {
   .button {
     margin-left: 15px;
   }
+}
+
+.navbar-inverse .navbar-brand {
+    color: $white;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: $white-84;
 }
