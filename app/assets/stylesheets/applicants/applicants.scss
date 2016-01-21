@@ -7,7 +7,8 @@
 
     .applicant-large-img {
       margin-bottom: 30px;
-      max-width: 210px;
+      width: 210px;
+      height: 210px;
 
       img {
         border-radius: 4px;
@@ -94,12 +95,21 @@
     }
   }
 
+  @media (max-width: 991px) {
+    .admin-applicant-info {
+      .applicant-large-img {
+          width: 100%;
+      }
+    }
+  }
+
   @media (max-width: 768px) {
     .admin-applicant-info {
       margin-top: 10px;
 
       .applicant-large-img {
           width: 150px;
+          height: 150px;
       }
     }
 
