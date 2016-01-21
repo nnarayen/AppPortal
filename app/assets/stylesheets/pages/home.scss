@@ -44,8 +44,12 @@
   }
 
   p {
-    line-height: 1.2;
-    margin-bottom: 10px;
+    line-height: 1.4;
+    margin-bottom: 14px;
+  }
+
+  .link {
+    font-size: $f-size-md;
   }
 }
 
@@ -63,6 +67,10 @@
 
 .register-link {
   cursor: pointer;
+}
+
+.about-subtitle {
+  font-size: $f-size-md;
 }
 
 p.about-link {
