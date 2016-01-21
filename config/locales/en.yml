@@ -18,7 +18,7 @@ en:
   applicants:
     apply:
       submitted:
-        Your application to the Berkeley Group has been successfully submitted!
+        Your application to The Berkeley Group has been successfully submitted!
         You should be hearing from us shortly.
       deadline:
         The deadline for this semester's application has already passed. Please
@@ -27,17 +27,17 @@ en:
         Welcome to the online application portal for The Berkeley Group. All
         fields are required.
       info-0: >
-        Applications are due by 11:59 pm on Tuesday, September 8, 2015.
+        Applications are due by 11:59 pm on Wednesday, January 27, 2015.
       info-1: >
         Late or Incomplete applications will not be accepted.
       info-2: >
-        You will be notified by email Thursday afternoon (9/10) if you are
+        You will be notified by email Friday afternoon (1/29) if you are
         invited for a group interview. The case workshop for group interview
-        applicants will be in 2060 VLSB, 8-10 PM (9/10). Following the group
+        applicants will be in 145 Dwinelle, 8-10 PM (1/27). Following the group
         interview, if you are further selected for a personal interview you
-        will be notified Saturday night (9/12). Finally, if you move on from
+        will be notified Saturday night (1/131). Finally, if you move on from
         the personal interview stage you will be invited to a meet and greet
-        with the club, which will take place on the following Wednesday (9/16).
+        with the club, which will take place on the following Wednesday (2/3).
       info-3: >
         You will be asked to attach a resume and a picture of yourself.
       info-4: >
@@ -46,7 +46,10 @@ en:
       info-5: >
         A one page resume is required. For assistance with writing resumes,
         please visit the career center.
+      info-6: >
+        Please write your responses on a separate document before submitting.
     status:
       notify: >
         Thank you for applying to The Berkeley Group. At this point, we've
-        decided we can't move forward with your application. Sucks.
+        decided we can't move forward with your application. Please consider
+        reapplying again next semester.
