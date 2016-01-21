@@ -12,7 +12,7 @@
         h1.apply-title Application Information
         p = t ".welcome"
         ul.application-information
-          - (0..5).each do |n|
+          - (0..6).each do |n|
             li.info-item = t ".info-#{n}"
         = react_component "StudentApplication", { \
           applicant_id: applicant_id              \
