@@ -2,7 +2,7 @@ $icon-list: "\f00d" "\f128" "\f00c";
 
 .applicant-overview-container {
   margin-top: 30px;
-  
+
   @each $icon in $icon-list {
     $i: (index($icon-list, $icon) - 1);
     .decision-#{$i}:before {
