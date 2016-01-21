@@ -5,7 +5,7 @@ class AdminApplicantInfo extends React.Component {
 
     _renderInput(name, label) {
         return (
-            <div className="col-md-4 col-sm-4 col-xs-6 applicant-details">
+            <div className="applicant-details">
                 <h4 className="detail-label">{label}</h4>
                 <h3 className="detail">{this.props.applicant[name]}</h3>
             </div>
@@ -15,19 +15,23 @@ class AdminApplicantInfo extends React.Component {
     render() {
         return (
             <div className="admin-applicant-info row">
-                <div className="applicant-large-img col-md-5 col-sm-5">
-                    <img src={this.props.applicant.picture} />
+                <div className="col-md-3 col-sm-3">
+                    <div className="applicant-large-img">
+                        <img src={this.props.applicant.picture} />
+                    </div>
                 </div>
-                <div className="col-md-7 col-sm-7">
+                <div className="col-md-9 col-sm-9">
                     <h2 className="applicant-name">
                         {this.props.applicant.full_name}
                     </h2>
-                    { this._renderInput("major", "Major") }
-                    { this._renderInput("year", "Year") }
-                    { this._renderInput("gpa", "GPA") }
-                    { this._renderInput("email", "Email") }
-                    { this._renderInput("units", "Sp 2016 Units") }
-                    { this._renderInput("phone", "Phone") }
+                    <div className="detail-container">
+                        { this._renderInput("major", "Major") }
+                        { this._renderInput("year", "Year") }
+                        { this._renderInput("gpa", "GPA") }
+                        { this._renderInput("email", "Email") }
+                        { this._renderInput("units", "Sp 2016 Units") }
+                        { this._renderInput("phone", "Phone") }
+                    </div>
                 </div>
             </div>
         );

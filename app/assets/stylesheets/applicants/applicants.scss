@@ -8,6 +8,7 @@
     .applicant-large-img {
       margin-bottom: 30px;
       width: 210px;
+      height: 210px;
 
       img {
         border-radius: 4px;
@@ -25,7 +26,17 @@
 
   .applicant-details {
     margin-bottom: 15px;
-    padding-left: 0;
+    padding: 0 10px;
+    width: 30%;
+
+    &:nth-of-type(3n+1) {
+      padding-left: 0;
+    }
+  }
+
+  .detail-container {
+    display: flex;
+    flex-flow: row wrap;
   }
 
   .detail-label {
@@ -38,6 +49,7 @@
     font-size: $f-size-lg;
     font-weight: bold;
     margin: 0;
+    word-wrap: break-word;
   }
 
   .applicant-resume {
@@ -83,12 +95,21 @@
     }
   }
 
+  @media (max-width: 991px) {
+    .admin-applicant-info {
+      .applicant-large-img {
+          width: 100%;
+      }
+    }
+  }
+
   @media (max-width: 768px) {
     .admin-applicant-info {
       margin-top: 10px;
 
       .applicant-large-img {
           width: 150px;
+          height: 150px;
       }
     }
 
