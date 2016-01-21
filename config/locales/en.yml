@@ -1,11 +1,9 @@
 ---
 en:
-  activerecord:
-    errors:
-      models:
-        applicant:
-          invalid: >
-            slot has been filled. Please refresh or choose another.
+  errors:
+    applicant:
+      invalid: >
+        slot has now been filled. Please refresh or choose another.
   pages:
     home:
       about-1: >

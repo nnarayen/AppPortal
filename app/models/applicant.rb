@@ -53,12 +53,12 @@ class Applicant < ActiveRecord::Base
 
   before_create :generate_responses
 
+  validate :interview_available?, if: :interview_id_changed?
+
   validates :password_confirmation, presence: true, if: :password_required?
   validates :first_name, :last_name, :year, :major, presence: true, on: :submit
   validates :gpa, :units, :phone, :resume, :picture, presence: true, on: :submit
   validates :stage, numericality: { less_than: 3 }
-
-  validates_associated :interview, if: :interview_id_changed?
 
   scope :submitted, -> { where(submit: true) }
   scope :current, -> { where(stage: Settings.instance.stage) }
@@ -134,6 +134,10 @@ class Applicant < ActiveRecord::Base
   end
 
   private
+
+  def interview_available?
+    errors.add(:interview, I18n.t("errors.applicant.invalid")) unless interview.available?
+  end
 
   def generate_responses
     Question.find_each do |question|
