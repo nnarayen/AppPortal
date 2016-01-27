@@ -8,6 +8,10 @@ class UpdateDeadline extends AltComponent {
         this.state = { date : this.props.deadline };
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.setState({ date : nextProps.deadline });
+    }
+
     _updateDeadline = (e) => {
         SettingsActions.updateSettings({ deadline : this.state.date });
     }
