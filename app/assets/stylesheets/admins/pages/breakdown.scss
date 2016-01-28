@@ -7,7 +7,9 @@
 
 .applicant-card {
   display: block;
-  border: 1px solid $gray-dark-36;
+  border: 1px solid $gray-dark-24;
+  border-radius: 2px;
+  margin-bottom: 7px;
   overflow: hidden;
   position: relative;
 
@@ -34,13 +36,20 @@
   }
 
   .applicant-info-container {
-    padding: 10px 0;
-    margin-left: 120px;
+    padding: 10px 15px;
+    margin-left: 100px;
+    width: calc(100% - 100px);
   }
 
   .applicant-info {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom: 5px;
+
     label {
       margin-right: 5px;
+      margin-bottom: 0;
     }
   }
 }
