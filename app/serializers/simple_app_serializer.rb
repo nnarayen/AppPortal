@@ -5,10 +5,4 @@ class SimpleAppSerializer < ActiveModel::Serializer
   def full_name
     "#{object.first_name} #{object.last_name}"
   end
-
-  def status
-    [:rejected?, :undecided?, :accepted?].each.with_index do |type, index|
-      return index if object.send(type)
-    end
-  end
 end

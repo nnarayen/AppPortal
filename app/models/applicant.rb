@@ -133,6 +133,12 @@ class Applicant < ActiveRecord::Base
     update!(password_params.merge(token: nil))
   end
 
+  def status
+    [:rejected?, :undecided?, :accepted?].each.with_index do |type, index|
+      return index if send(type)
+    end
+  end
+
   private
 
   def interview_available?

@@ -7,7 +7,7 @@ module Api
     def index
       applicants = Applicant.all.submitted.current
       applicants = applicants.filter(params[:filter]) if params[:filter].present?
-      render json: applicants.order(:id), each_serializer: SimpleAppSerializer
+      render json: applicants.sort_by(&:status).reverse, each_serializer: SimpleAppSerializer
     end
 
     def show
