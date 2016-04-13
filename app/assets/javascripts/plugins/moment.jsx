@@ -4,13 +4,13 @@ const TIME_FORMAT = "h:mm A";
 
 // Configuration for DateTimePicker gem
 Date.parseDate = function(input, format) {
-    return moment.utc(input, format).toDate();
+    return moment(input, format).toDate();
 };
 
 Date.prototype.dateFormat = function(format) {
-    return moment.utc(this).format(format);
+    return moment(this).format(format);
 };
 
 const formatDateTime = (date) => {
-    return moment.utc(date).format(DATETIME_FORMAT);
+    return moment(date).format(DATETIME_FORMAT);
 }
