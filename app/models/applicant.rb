@@ -45,11 +45,11 @@ class Applicant < ActiveRecord::Base
       tsearch: { prefix: true }
     }
 
-  has_many :responses
+  has_many :responses, dependent: :destroy
   accepts_nested_attributes_for :responses
 
-  has_many :comments
-  belongs_to :interview, dependent: :destroy
+  belongs_to :interview
+  has_many :comments, dependent: :destroy
 
   before_create :generate_responses
 
