@@ -29,7 +29,7 @@ class AdminApplicantInfo extends React.Component {
                         { this._renderInput("year", "Year") }
                         { this._renderInput("gpa", "GPA") }
                         { this._renderInput("email", "Email") }
-                        { this._renderInput("units", "Fa 2016 Units") }
+                        { this._renderInput("units", "Sp 2017 Units") }
                         { this._renderInput("phone", "Phone") }
                     </div>
                 </div>
