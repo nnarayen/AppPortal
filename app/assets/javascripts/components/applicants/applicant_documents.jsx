@@ -64,7 +64,7 @@ class ApplicantDocuments extends React.Component {
             <div className={`upload-container scroll-${ScrollTargets.UPLOAD}`}>
                 <h2 className="category-title">{CategoryTitles.UPLOAD}</h2>
                 <div className="single-upload-container">
-                    <label className="upload-label">Resume</label>
+                    <label className="upload-label">Resume & Transcript</label>
                     <input type="file" name={Attributes.RESUME} id="resume-upload"
                         accept={FileInputs.RESUME}
                         onChange={this._handleFileSelect} />
