@@ -8,7 +8,7 @@ questions:
     category:
       0
     limit:
-      800
+      1000
   - title:
       'Describe the activity that you have been committed to the most and your
        role within it.'
