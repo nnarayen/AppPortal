@@ -2,13 +2,13 @@
 
 questions:
   - title:
-      'What is a social issue that you're passionate about and why?'
+      'What is a social issue that you are passionate about and why?'
     qtype:
       0
     category:
       0
     limit:
-      900
+      800
   - title:
       'Why social sector consulting?'
     qtype:
@@ -16,7 +16,7 @@ questions:
     category:
       0
     limit:
-      900
+      800
   - title:
       'Please list all activities you will be participating in this semester
        and time commitment per week.'
