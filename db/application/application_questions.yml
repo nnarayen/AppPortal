@@ -2,22 +2,13 @@
 
 questions:
   - title:
-      'What can you contribute to TBG that other prospective students cannot?'
+      'What is a social issue that you're passionate about and why?'
     qtype:
       0
     category:
       0
     limit:
-      1000
-  - title:
-      'Describe the activity that you have been committed to the most and your
-       role within it.'
-    qtype:
-      0
-    category:
-      0
-    limit:
-      800
+      900
   - title:
       'Why social sector consulting?'
     qtype:
@@ -25,7 +16,7 @@ questions:
     category:
       0
     limit:
-      800
+      900
   - title:
       'Please list all activities you will be participating in this semester
        and time commitment per week.'
