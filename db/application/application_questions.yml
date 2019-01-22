@@ -2,21 +2,13 @@
 
 questions:
   - title:
-      'What is a social issue that you are passionate about and why?'
+      'What sparked your interest in the work TBG does? Why do you feel you are a good fit for the organization? Feel free to discuss other involvements, classes, or anything else that comes to mind.'
     qtype:
       0
     category:
       0
     limit:
-      800
-  - title:
-      'Why social sector consulting?'
-    qtype:
-      0
-    category:
-      0
-    limit:
-      800
+      400
   - title:
       'Please list all activities you will be participating in this semester
        and time commitment per week.'
@@ -46,7 +38,7 @@ questions:
     category:
       1
   - title:
-      'Can you attend the mandatory TBG Retreat, September 9/21-23? (Fri afternoon
+      'Can you attend the mandatory TBG Retreat, February 2/7-9? (Fri afternoon
        - Sun noon)'
     qtype:
       2
