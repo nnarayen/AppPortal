@@ -8,7 +8,7 @@ questions:
     category:
       0
     limit:
-      400
+      3000
   - title:
       'Please list all activities you will be participating in this semester
        and time commitment per week.'
