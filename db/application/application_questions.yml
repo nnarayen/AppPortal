@@ -2,7 +2,10 @@
 
 questions:
   - title:
-      'What sparked your interest in the work TBG does? Why do you feel you are a good fit for the organization?'
+      'What sparked your interest in the work TBG does? Why do you feel you are a good fit for the organization? (400 words max) 
+      Some prompts to get you thinking: How do your personal and professional goals align with joining TBG? 
+      What do you hope to gain from the project work and fellow members? 
+      What experience, background, or insight in the social sector can you contribute to TBG?'
     qtype:
       0
     category:
